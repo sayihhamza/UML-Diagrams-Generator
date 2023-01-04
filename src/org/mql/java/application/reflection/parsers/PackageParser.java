@@ -1,4 +1,4 @@
-package org.mql.java.application.parsers;
+package org.mql.java.application.reflection.parsers;
 
 import java.util.Set;
 

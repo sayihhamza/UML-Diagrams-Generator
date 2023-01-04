@@ -1,14 +1,14 @@
 package org.mql.java.application.models.primary;
 
-import java.util.List;
+import java.util.Set;
 
 public class ProjectModel {
 
 	private final String name;
 	private final String path;
-	private final List<PackageModel> allPackages;
-	
-	public ProjectModel(String name,String path,List<PackageModel> allPackages) {
+	private final Set<PackageModel> allPackages;
+
+	public ProjectModel(String name, String path, Set<PackageModel> allPackages) {
 		this.name = name;
 		this.path = path;
 		this.allPackages = allPackages;
@@ -22,7 +22,12 @@ public class ProjectModel {
 		return path;
 	}
 
-	public List<PackageModel> getAllPackages() {
+	public Set<PackageModel> getAllPackages() {
 		return allPackages;
+	}
+
+	@Override
+	public String toString() {
+		return "ProjectModel [name=" + name + ", path=" + path + ", allPackages=" + allPackages + "]";
 	}
 }

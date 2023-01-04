@@ -2,11 +2,9 @@ package org.mql.java.example.classes;
 
 import java.util.List;
 
-import org.mql.java.example.annotations.*;
 import org.mql.java.example.enums.EnergeyType;
 import org.mql.java.example.interfaces.Sound;
 
-@VehicleLabel(value="Audi",modelYear=1988)
 public class Car extends Vehicle implements Sound{
 	
 	private Driver driver;

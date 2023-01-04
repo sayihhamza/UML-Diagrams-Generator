@@ -2,9 +2,9 @@ package org.mql.java.application;
 
 import java.util.Set;
 
-import org.mql.java.application.parsers.ClassParser;
-import org.mql.java.application.parsers.ProjectParser;
-import org.mql.java.application.parsers.PackageParser;
+import org.mql.java.application.reflection.parsers.ClassParser;
+import org.mql.java.application.reflection.parsers.PackageParser;
+import org.mql.java.application.reflection.parsers.ProjectParser;
 import org.mql.java.application.utils.ReflectionUtils;
 
 public class Main {

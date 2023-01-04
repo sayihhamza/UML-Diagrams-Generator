@@ -1,4 +1,4 @@
-package org.mql.java.application.parsers;
+package org.mql.java.application.reflection.parsers;
 
 import java.util.Set;
 
@@ -12,7 +12,7 @@ public class ProjectParser {
 
 	public ProjectParser(String path) {
 		this.targetProject = path.substring(path.lastIndexOf("\\") + 1);
-		this.path = path;
+		this.path = path + "\\bin\\";
 	}
 
 	public Set<String> getAllPackages() {

@@ -6,47 +6,35 @@ public class FieldModel {
 
 	private String name;
 	private int modifier;
-	private String initialValue;
 	private boolean isClassModelType;
 	private Type type;
 
-	public String getName() {
-		return name;
+	public FieldModel(String name, int modifier, boolean isClassModelType, Type type) {
+		this.name = name;
+		this.modifier = modifier;
+		this.isClassModelType = isClassModelType;
+		this.type = type;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public String getName() {
+		return name;
 	}
 
 	public int getModifier() {
 		return modifier;
 	}
 
-	public void setModifier(int modifier) {
-		this.modifier = modifier;
-	}
-
-	public String getInitialValue() {
-		return initialValue;
-	}
-
-	public void setInitialValue(String initialValue) {
-		this.initialValue = initialValue;
-	}
-
 	public boolean isClassModelType() {
 		return isClassModelType;
-	}
-
-	public void setClassModelType(boolean isClassModelType) {
-		this.isClassModelType = isClassModelType;
 	}
 
 	public Type getType() {
 		return type;
 	}
 
-	public void setType(Type type) {
-		this.type = type;
+	@Override
+	public String toString() {
+		return "FieldModel [name=" + name + ", modifier=" + modifier + ", isClassModelType=" + isClassModelType
+				+ ", type=" + type + "]";
 	}
 }

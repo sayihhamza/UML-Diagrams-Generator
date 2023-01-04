@@ -1,6 +1,5 @@
-package org.mql.java.application.parsers;
+package org.mql.java.application.reflection.parsers;
 
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -28,20 +27,16 @@ public class ClassParser {
 		return Arrays.asList(targetClass.getDeclaredConstructors());
 	}
 
-	public List<Field> getFields() {
-		return Arrays.asList(targetClass.getDeclaredFields());
-	}
-
 	public List<Class<?>> getIntefaces() {
 		return Arrays.asList(targetClass.getInterfaces());
 	}
 
-	public List<Method> getMethods() {
-		return Arrays.asList(targetClass.getMethods());
+	public List<Field> getFields() {
+		return Arrays.asList(targetClass.getDeclaredFields());
 	}
 
-	public List<Annotation> getAnnotations() {
-		return Arrays.asList(targetClass.getAnnotations());
+	public List<Method> getMethods() {
+		return Arrays.asList(targetClass.getDeclaredMethods());
 	}
 
 	public List<Object> getConstatns() {
