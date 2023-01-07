@@ -6,17 +6,17 @@ import java.net.URLClassLoader;
 
 public class ReflectionUtils {
 
-	public static Class<?> loadClass(String className, String path) {
+	public static Class<?> loadClass(File file) {
 		try {
-			File file = new File(path);
-			URL[] classPath = { file.toURI().toURL() };
-			try (URLClassLoader urlcl = new URLClassLoader(classPath)) {
-				return urlcl.loadClass(className);
-			}
-		} catch (Exception E) {
-			System.out.println("Class not found");
+			URLClassLoader classLoader;
+			String className = "org.mql.java.example.classes.Bike";
+			className = StringUtils.trimPath(file.getAbsolutePath());
+			String uri = file.toURI().toString();
+			classLoader = URLClassLoader.newInstance(new URL[] { new URL(uri) });
+			return classLoader.loadClass(className);
+		} catch (Exception e) {
+			System.out.println("EXCEPTION " + e.getMessage());
 		}
 		return null;
 	}
-
 }

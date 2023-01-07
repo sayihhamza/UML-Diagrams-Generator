@@ -1,17 +1,21 @@
 package org.mql.java.application.models.primary;
 
-import java.util.Set;
+import java.io.File;
+import java.util.List;
 
-public class ProjectModel {
+import org.mql.java.application.models.Model;
+
+public class ProjectModel implements Model {
 
 	private final String name;
-	private final String path;
-	private final Set<PackageModel> allPackages;
 
-	public ProjectModel(String name, String path, Set<PackageModel> allPackages) {
-		this.name = name;
-		this.path = path;
-		this.allPackages = allPackages;
+	private String path;
+	private List<PackageModel> packages;
+
+
+	public ProjectModel(File projectDirectory,String projectName) {
+		path = projectDirectory.getAbsolutePath();
+		name = projectName;
 	}
 
 	public String getName() {
@@ -22,12 +26,11 @@ public class ProjectModel {
 		return path;
 	}
 
-	public Set<PackageModel> getAllPackages() {
-		return allPackages;
+	public List<PackageModel> getPackages() {
+		return packages;
 	}
 
-	@Override
-	public String toString() {
-		return "ProjectModel [name=" + name + ", path=" + path + ", allPackages=" + allPackages + "]";
+	public void setPackages(List<PackageModel> packages) {
+		this.packages = packages;
 	}
 }

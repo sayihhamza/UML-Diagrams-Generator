@@ -1,19 +1,16 @@
 package org.mql.java.application.models.secondary;
 
-public class ConstantModel {
+import org.mql.java.application.models.Model;
 
-	private Object constantValue;
+public class ConstantModel implements Model {
 
-	public ConstantModel(Object constantValue) {
-		this.constantValue = constantValue;
+	private final Object name;
+
+	public ConstantModel(Object constant) {
+		name = constant;
 	}
 
-	public Object getConstantValue() {
-		return constantValue;
-	}
-
-	@Override
-	public String toString() {
-		return "ConstantModel [constantValue=" + constantValue + "]";
+	public String getName() {
+		return name.toString();
 	}
 }

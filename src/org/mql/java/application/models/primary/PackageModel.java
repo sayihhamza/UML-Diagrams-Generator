@@ -2,26 +2,26 @@ package org.mql.java.application.models.primary;
 
 import java.util.List;
 
-public class PackageModel {
+import org.mql.java.application.models.Model;
+
+public class PackageModel implements Model{
 
 	private final String name;
-	private final List<ClassModel> innerClasses;
+	private List<ClassModel> classes;
 
-	public PackageModel(String name, List<ClassModel> innerClasses) {
+	public PackageModel(String name) {
 		this.name = name;
-		this.innerClasses = innerClasses;
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public List<ClassModel> getInnerClasses() {
-		return innerClasses;
+	public List<ClassModel> getClasses() {
+		return classes;
 	}
-
-	@Override
-	public String toString() {
-		return "PackageModel [name=" + name + ", innerClasses=" + innerClasses + "]";
+	
+	public void setClasses(List<ClassModel> classes) {
+		this.classes = classes;
 	}
 }

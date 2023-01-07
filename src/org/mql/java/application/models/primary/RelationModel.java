@@ -1,57 +1,42 @@
 package org.mql.java.application.models.primary;
 
+import org.mql.java.application.models.Model;
 import org.mql.java.application.types.RelationType;
 
-public class RelationModel {
+public class RelationModel implements Model {
 
-	private RelationType realtionType;
-	private ClassModel parentClass;
-	private ClassModel childClass;
-	private String parentCardinality;
-	private String childCardinality;
-	
-	public RelationModel() {
-		this.parentCardinality = null;
-		this.childCardinality = null;
+	private final String name;
+	private final RelationType realtionType;
+
+	private ClassModel relationParent;
+	private ClassModel realtionChild;
+
+	public RelationModel(RelationType realtionType) {
+		this.realtionType = realtionType;
+		name = realtionType.toString();
 	}
 
-	public RelationType getType() {
+	public String getName() {
+		return name;
+	}
+
+	public RelationType getRealtionType() {
 		return realtionType;
 	}
 
-	public void setType(RelationType type) {
-		this.realtionType = type;
+	public ClassModel getRelationParent() {
+		return relationParent;
 	}
 
-	public ClassModel getParent() {
-		return parentClass;
+	public void setRelationParent(ClassModel relationParent) {
+		this.relationParent = relationParent;
 	}
 
-	public void setParent(ClassModel parent) {
-		this.parentClass = parent;
+	public ClassModel getRealtionChild() {
+		return realtionChild;
 	}
 
-	public ClassModel getChild() {
-		return childClass;
-	}
-
-	public void setChild(ClassModel child) {
-		this.childClass = child;
-	}
-
-	public String getParentCardinality() {
-		return parentCardinality;
-	}
-
-	public void setParentCardinality(String parentCardinality) {
-		this.parentCardinality = parentCardinality;
-	}
-
-	public String getChildCardinality() {
-		return childCardinality;
-	}
-
-	public void setChildCardinality(String childCardinality) {
-		this.childCardinality = childCardinality;
+	public void setRealtionChild(ClassModel realtionChild) {
+		this.realtionChild = realtionChild;
 	}
 }

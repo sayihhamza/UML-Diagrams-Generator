@@ -1,4 +1,4 @@
-package org.mql.java.application.reflection.parsers;
+package org.mql.java.application.parsers.reflection;
 
 public class RelationParser {
 

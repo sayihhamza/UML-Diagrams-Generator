@@ -1,21 +1,24 @@
 package org.mql.java.application.models.primary;
 
+import java.lang.reflect.Constructor;
 import java.util.List;
+import java.util.Vector;
 
+import org.mql.java.application.models.Model;
 import org.mql.java.application.models.secondary.FieldModel;
 import org.mql.java.application.models.secondary.MethodModel;
 
-public class ClassModel {
+public class ClassModel implements Model {
 
 	private final String name;
 
 	private List<FieldModel> fields;
 	private List<MethodModel> methods;
 
-	public ClassModel(String name, List<FieldModel> fields, List<MethodModel> methods) {
+	public ClassModel(String name) {
 		this.name = name;
-		this.fields = fields;
-		this.methods = methods;
+		this.fields = new Vector<>();
+		this.methods = new Vector<>();
 	}
 
 	public String getName() {
@@ -26,12 +29,28 @@ public class ClassModel {
 		return fields;
 	}
 
-	public List<MethodModel> getClassMethods() {
+	public void setFields(List<FieldModel> fields) {
+		this.fields = fields;
+	}
+
+	public List<MethodModel> getMethods() {
 		return methods;
 	}
 
-	@Override
-	public String toString() {
-		return "ClassModel [name=" + name + ", classFields=" + fields + ", classMethods=" + methods + "]";
+	public void setMethods(List<MethodModel> methods) {
+		this.methods = methods;
+	}
+
+	public List<MethodModel> getConstructors() {
+		List<MethodModel> constructors = new Vector<>();
+		for (MethodModel method : methods)
+			if (method.isConstructor())
+				constructors.add(method);
+		return constructors;
+	}
+
+	public void addConstructor(Constructor<?> constructor) {
+		if (this.getClass() != EnumModel.class && this.getClass() != InterfaceModel.class)
+			methods.add(new MethodModel(constructor));
 	}
 }

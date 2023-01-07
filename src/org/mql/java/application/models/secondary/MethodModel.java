@@ -1,23 +1,36 @@
 package org.mql.java.application.models.secondary;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Method;
 import java.lang.reflect.Type;
+import java.util.Arrays;
 import java.util.List;
 
+import org.mql.java.application.models.Model;
 
-public class MethodModel {
+public class MethodModel implements Model {
 
-	private String name;
-	private List<Type> parameterTypes;
-	private int modifier;
-	private boolean isConstructor;
-	private Type type;
+	private final String name;
+	
+	private final List<Type> parameterTypes;
+	private final int modifier;
+	private final boolean isConstructor;
+	private final Type returnType;
 
-	public MethodModel(String name, List<Type> parameterTypes, int modifier, boolean isConstructor, Type type) {
-		this.name = name;
-		this.parameterTypes = parameterTypes;
-		this.modifier = modifier;
-		this.isConstructor = isConstructor;
-		this.type = type;
+	public MethodModel(Method method) {
+		name = method.getName();
+		parameterTypes = Arrays.asList(method.getParameterTypes());
+		modifier = method.getModifiers();
+		isConstructor = false;
+		returnType= method.getReturnType();
+	}
+	
+	public MethodModel(Constructor<?> constructor) {
+		name = constructor.getName();
+		parameterTypes = Arrays.asList(constructor.getParameterTypes());
+		modifier = constructor.getModifiers();
+		isConstructor = true;
+		returnType = null;
 	}
 
 	public String getName() {
@@ -36,14 +49,7 @@ public class MethodModel {
 		return isConstructor;
 	}
 
-	public Type getType() {
-		return type;
+	public Type getReturnType() {
+		return returnType;
 	}
-
-	@Override
-	public String toString() {
-		return "MethodModel [name=" + name + ", parameterTypes=" + parameterTypes + ", modifier=" + modifier
-				+ ", isConstructor=" + isConstructor + ", type=" + type + "]";
-	}
-	
 }

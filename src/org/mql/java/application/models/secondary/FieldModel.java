@@ -1,19 +1,21 @@
 package org.mql.java.application.models.secondary;
 
+import java.lang.reflect.Field;
 import java.lang.reflect.Type;
 
-public class FieldModel {
+import org.mql.java.application.models.Model;
 
-	private String name;
-	private int modifier;
-	private boolean isClassModelType;
-	private Type type;
+public class FieldModel implements Model {
 
-	public FieldModel(String name, int modifier, boolean isClassModelType, Type type) {
-		this.name = name;
-		this.modifier = modifier;
-		this.isClassModelType = isClassModelType;
-		this.type = type;
+	private final String name;
+
+	private final int modifier;
+	private final Type type;
+
+	public FieldModel(Field field) {
+		name = field.getName();
+		modifier = field.getModifiers();
+		type = field.getType();
 	}
 
 	public String getName() {
@@ -24,17 +26,7 @@ public class FieldModel {
 		return modifier;
 	}
 
-	public boolean isClassModelType() {
-		return isClassModelType;
-	}
-
 	public Type getType() {
 		return type;
-	}
-
-	@Override
-	public String toString() {
-		return "FieldModel [name=" + name + ", modifier=" + modifier + ", isClassModelType=" + isClassModelType
-				+ ", type=" + type + "]";
 	}
 }
