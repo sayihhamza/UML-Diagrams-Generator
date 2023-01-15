@@ -12,28 +12,40 @@ import org.mql.java.application.utils.StringUtils;
 
 public class PackageParser implements Parser {
 
-	private final File targetPackage;
-	private final String name;
+	private File targetPackage;
+	private String name;
 
-	public PackageParser(File packageFile) {
-		name = StringUtils.trimPath(packageFile.getAbsolutePath());
-		targetPackage = packageFile;
+	public String getName() {
+		return name;
+	}
+
+	public File getTargetPackage() {
+		return targetPackage;
+	}
+
+	public void setTargetPackage(File targetPackage) {
+		this.targetPackage = targetPackage;
+		this.name = StringUtils.toPackageName(targetPackage.getAbsolutePath());
 	}
 
 	public Object parse() {
 		if (FileUtils.isPackageDirectory(targetPackage)) {
 			PackageModel packageModel = new PackageModel(name);
-			List<ClassModel> classModels = new Vector<>();
-			for (File classFile : targetPackage.listFiles()) {
-				if (FileUtils.isClassFile(classFile)) {
-					ClassParser classParser = new ClassParser(classFile);
-					ClassModel classModel = (ClassModel) classParser.parse();
-					classModels.add(classModel);
-				}
-			}
-			packageModel.setClasses(classModels);
+			parseClasses(packageModel);
 			return packageModel;
 		}
 		return null;
+	}
+
+	private void parseClasses(PackageModel packageModel) {
+		List<ClassModel> classModels = new Vector<>();
+		for (File classFile : targetPackage.listFiles()) {
+			if (FileUtils.isClassFile(classFile)) {
+				ClassParser classParser = new ClassParser();
+				classParser.setTargetClass(classFile);
+				classModels.add((ClassModel) classParser.parse());
+			}
+		}
+		packageModel.setClasses(classModels);
 	}
 }

@@ -7,10 +7,15 @@ public class ConstantModel implements Model {
 	private final Object name;
 
 	public ConstantModel(Object constant) {
-		name = constant;
+		this.name = constant;
 	}
 
-	public String getName() {
-		return name.toString();
+	public Object getName() {
+		return name;
+	}
+
+	@Override
+	public String toString() {
+		return "ConstantModel [name=" + name + "]";
 	}
 }

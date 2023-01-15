@@ -8,10 +8,10 @@ import org.mql.java.application.models.secondary.ConstantModel;
 public class EnumModel extends ClassModel {
 
 	private List<ConstantModel> constants;
-	
+
 	public EnumModel(String name) {
 		super(name);
-		constants = new Vector<>();
+		this.constants = new Vector<>();
 	}
 
 	public List<ConstantModel> getConstants() {
@@ -20,5 +20,10 @@ public class EnumModel extends ClassModel {
 
 	public void setConstants(List<ConstantModel> constants) {
 		this.constants = constants;
+	}
+
+	@Override
+	public String toString() {
+		return "EnumModel [name =" + super.getName() + ", constants=" + constants + "]";
 	}
 }

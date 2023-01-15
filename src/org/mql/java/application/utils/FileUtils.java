@@ -1,11 +1,11 @@
 package org.mql.java.application.utils;
 
 import java.io.File;
-import java.util.Set;
+import java.util.List;
 
 public class FileUtils {
 
-	public static void getAllPackages(File dirctory, Set<File> allPackages) {
+	public static void getAllPackages(File dirctory, List<File> allPackages) {
 		if (dirctory.exists() && dirctory.isDirectory()) {
 			for (File childDirectory : dirctory.listFiles()) {
 				if (childDirectory.isDirectory()) {
@@ -17,7 +17,7 @@ public class FileUtils {
 		}
 	}
 
-	public static void getClasses(File packageDirectory, Set<File> classes) {
+	public static void getClasses(File packageDirectory, List<File> classes) {
 		if (isPackageDirectory(packageDirectory)) {
 			for (File classFile : packageDirectory.listFiles()) {
 				if (classFile.getAbsolutePath().endsWith(".class"))
@@ -27,13 +27,15 @@ public class FileUtils {
 	}
 
 	public static boolean isProjectDirectory(File projectDirectory) {
-		if (projectDirectory.isDirectory()) {
-			if (isPackageDirectory(projectDirectory)) {
-				return true;
-			} else {
-				for (File childDirectory : projectDirectory.listFiles())
-					isProjectDirectory(childDirectory);
-			}
+		if (isPackageDirectory(projectDirectory)) {
+			return true;
+		} else if (projectDirectory.isDirectory()) {
+			for (File childDirectory : projectDirectory.listFiles())
+				if (isPackageDirectory(childDirectory)) {
+					return true;
+				} else {
+					isPackageDirectory(childDirectory);
+				}
 		}
 		return false;
 	}
@@ -45,7 +47,7 @@ public class FileUtils {
 					return true;
 			}
 		}
-		return false;
+		return true;
 	}
 
 	public static boolean isClassFile(File classFile) {

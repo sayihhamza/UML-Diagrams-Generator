@@ -26,5 +26,12 @@ public class Bike extends Vehicle implements Sound {
 	public void makeSound() {
 		
 	}
-
+	
+	void testDependency(Car car,Driver driv) {
+		
+	}
+	
+	public class FuelBike {
+		
+	}
 }

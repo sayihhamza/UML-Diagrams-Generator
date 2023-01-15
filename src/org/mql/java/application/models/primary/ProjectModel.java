@@ -8,10 +8,10 @@ import org.mql.java.application.models.Model;
 public class ProjectModel implements Model {
 
 	private final String name;
-
-	private String path;
+	private final String path;
+	
 	private List<PackageModel> packages;
-
+	private List<RelationModel> classRelations;
 
 	public ProjectModel(File projectDirectory,String projectName) {
 		path = projectDirectory.getAbsolutePath();
@@ -32,5 +32,19 @@ public class ProjectModel implements Model {
 
 	public void setPackages(List<PackageModel> packages) {
 		this.packages = packages;
+	}
+
+	public List<RelationModel> getClassRelations() {
+		return classRelations;
+	}
+
+	public void setClassRelations(List<RelationModel> classRelations) {
+		this.classRelations = classRelations;
+	}
+
+	@Override
+	public String toString() {
+		return "ProjectModel [name=" + name + ", path=" + path + ", packages=" + packages + ", classRelations="
+				+ classRelations + "]";
 	}
 }

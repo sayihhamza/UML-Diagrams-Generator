@@ -9,6 +9,14 @@ public class Car extends Vehicle implements Sound{
 	
 	private Driver driver;
 	private final List<Wheel> wheels;
+	public List<Wheel> getWheels() {
+		return wheels;
+	}
+
+//	public void setWheels(List<Wheel> wheels) {
+//		this.wheels = wheels;
+//	}
+
 	private final EnergeyType energeyType;
 	
 	public Car(Driver driver,EnergeyType energeyType,List<Wheel> wheels) {
@@ -27,7 +35,7 @@ public class Car extends Vehicle implements Sound{
 		
 	}
 	
-	public void inCaseOfAccidentDriveBike(Bike bike) {
+	public static void inCaseOfAccidentDriveBike(Bike bike) {
 		
 	}
 }

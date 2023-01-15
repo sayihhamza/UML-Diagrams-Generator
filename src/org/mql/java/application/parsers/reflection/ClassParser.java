@@ -14,16 +14,24 @@ import org.mql.java.application.models.secondary.ConstantModel;
 import org.mql.java.application.models.secondary.FieldModel;
 import org.mql.java.application.models.secondary.MethodModel;
 import org.mql.java.application.parsers.Parser;
-import org.mql.java.application.utils.ReflectionUtils;
+import org.mql.java.application.utils.ClassLoader;
 
 public class ClassParser implements Parser {
 
-	private final Class<?> targetClass;
-	private final String name;
+	private Class<?> targetClass;
+	private String name;
+	
+	public String getName() {
+		return name;
+	}
 
-	public ClassParser(File classFile) {
-		targetClass = ReflectionUtils.loadClass(classFile);
-		name = targetClass.getName();
+	public Class<?> getTargetClass() {
+		return targetClass;
+	}
+	
+	public void setTargetClass(File classFile) {
+		this.targetClass = ClassLoader.loadClass(classFile);
+		this.name = targetClass.getName();
 	}
 
 	public Object parse() {
@@ -42,6 +50,8 @@ public class ClassParser implements Parser {
 				parseFields(classModel);
 				parseMethods(classModel);
 				parseConstructors(classModel);
+				parseInterfaces(classModel);
+				parseParentClass(classModel);
 				return classModel;
 			}
 		}
@@ -66,7 +76,7 @@ public class ClassParser implements Parser {
 
 	private void parseMethods(ClassModel classModel) {
 		List<MethodModel> methodModels = new Vector<>();
-		for (Method method : targetClass.getDeclaredMethods()) {
+		for (Method method : targetClass.getDeclaredMethods()) {	
 			methodModels.add(new MethodModel(method));
 		}
 		classModel.setMethods(methodModels);
@@ -74,7 +84,20 @@ public class ClassParser implements Parser {
 
 	private void parseConstructors(ClassModel classModel) {
 		for (Constructor<?> constructor : targetClass.getDeclaredConstructors()) {
-			classModel.addConstructor(constructor);
+			classModel.getMethods().add(new MethodModel(constructor));
 		}
+	}
+	
+	private void parseInterfaces(ClassModel classModel) {
+		List<ClassModel> interfaces = new Vector<>();
+		for (Class<?> interfac : targetClass.getInterfaces()) {
+			interfaces.add(new ClassModel(interfac.getName()));
+		}
+		classModel.setInterfaces(interfaces);
+	}
+	
+	private void parseParentClass(ClassModel classModel) {
+		ClassModel parentClass = new ClassModel(targetClass.getSuperclass().getName());
+		classModel.setParentClass(parentClass);
 	}
 }

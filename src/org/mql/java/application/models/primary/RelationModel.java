@@ -1,27 +1,28 @@
 package org.mql.java.application.models.primary;
 
 import org.mql.java.application.models.Model;
+import org.mql.java.application.models.secondary.FieldModel;
 import org.mql.java.application.types.RelationType;
 
 public class RelationModel implements Model {
 
-	private final String name;
-	private final RelationType realtionType;
+	private final RelationType relationType;
 
 	private ClassModel relationParent;
-	private ClassModel realtionChild;
+	private ClassModel relationChild;
+	
+	private FieldModel relationField;
 
 	public RelationModel(RelationType realtionType) {
-		this.realtionType = realtionType;
-		name = realtionType.toString();
+		this.relationType = realtionType;
 	}
 
-	public String getName() {
-		return name;
+	public RelationType getName() {
+		return relationType;
 	}
 
-	public RelationType getRealtionType() {
-		return realtionType;
+	public RelationType getRelationType() {
+		return relationType;
 	}
 
 	public ClassModel getRelationParent() {
@@ -32,11 +33,25 @@ public class RelationModel implements Model {
 		this.relationParent = relationParent;
 	}
 
-	public ClassModel getRealtionChild() {
-		return realtionChild;
+	public ClassModel getRelationChild() {
+		return relationChild;
 	}
 
-	public void setRealtionChild(ClassModel realtionChild) {
-		this.realtionChild = realtionChild;
+	public void setRelationChild(ClassModel relationChild) {
+		this.relationChild = relationChild;
+	}
+
+	public FieldModel getRelationField() {
+		return relationField;
+	}
+	
+	public void setRelationField(FieldModel relationField) {
+		this.relationField = relationField;
+	}
+
+	@Override
+	public String toString() {
+		return "RelationModel [relationType=" + relationType + ", relationParent=" + relationParent + ", relationChild="
+				+ relationChild + "]";
 	}
 }
