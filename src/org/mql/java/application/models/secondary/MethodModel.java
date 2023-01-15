@@ -61,11 +61,4 @@ public class MethodModel implements Model {
 	public List<Parameter> getParameters() {
 		return parameters;
 	}
-
-	@Override
-	public String toString() {
-		return "MethodModel [name=" + name + ", parameters=" + parameters + ", modifier=" + modifier
-				+ ", modifierString=" + modifierString + ", isConstructor=" + isConstructor + ", returnType="
-				+ returnType + "]";
-	}
 }

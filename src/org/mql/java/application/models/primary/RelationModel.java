@@ -48,10 +48,4 @@ public class RelationModel implements Model {
 	public void setRelationField(FieldModel relationField) {
 		this.relationField = relationField;
 	}
-
-	@Override
-	public String toString() {
-		return "RelationModel [relationType=" + relationType + ", relationParent=" + relationParent + ", relationChild="
-				+ relationChild + "]";
-	}
 }

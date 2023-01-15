@@ -26,9 +26,4 @@ public class PackageModel implements Model {
 	public void setClasses(List<ClassModel> classes) {
 		this.classes = classes;
 	}
-
-	@Override
-	public String toString() {
-		return "PackageModel [name=" + name + ", classes=" + classes + "]";
-	}
 }

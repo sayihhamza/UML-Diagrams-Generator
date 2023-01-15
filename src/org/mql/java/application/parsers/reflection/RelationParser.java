@@ -29,14 +29,14 @@ public class RelationParser implements Parser {
 	}
 
 	public RelationModel parse() {
-		if(!firstClass.equals(secondClass)) {
-		parseDependency();
-		parseAssociation();
-		parseAggregation();
-		parseCompostion();
-		parseRealisation();
-		parseGeneralization();
-		return relationModel;
+		if (!firstClass.equals(secondClass)) {
+			parseDependency();
+			parseAssociation();
+			parseAggregation();
+			parseCompostion();
+			parseRealisation();
+			parseGeneralization();
+			return relationModel;
 		}
 		return null;
 	}
@@ -52,7 +52,8 @@ public class RelationParser implements Parser {
 
 	public void parseAssociation() {
 		FieldModel associationField = null;
-		if ((associationField = ReflectionUtils.checkIfClassTypeInFieldsOf(firstClass, secondClass.getFields())) != null) {
+		if ((associationField = ReflectionUtils.checkIfClassTypeInFieldsOf(firstClass,
+				secondClass.getFields())) != null) {
 			RelationModel associationRelation = new RelationModel(RelationType.ASSOCIATION);
 			associationRelation.setRelationChild(firstClass);
 			associationRelation.setRelationParent(secondClass);
@@ -72,7 +73,7 @@ public class RelationParser implements Parser {
 	}
 
 	public void parseCompostion() {
-		if (ReflectionUtils.isRelationCompositeOf(firstClass,secondClass,getRelationModel())) {
+		if (ReflectionUtils.isRelationCompositeOf(firstClass, secondClass, getRelationModel())) {
 			RelationModel compositionRelation = new RelationModel(RelationType.COMPOSITION);
 			compositionRelation.setRelationChild(firstClass);
 			compositionRelation.setRelationParent(secondClass);

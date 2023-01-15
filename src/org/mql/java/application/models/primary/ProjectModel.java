@@ -41,10 +41,4 @@ public class ProjectModel implements Model {
 	public void setClassRelations(List<RelationModel> classRelations) {
 		this.classRelations = classRelations;
 	}
-
-	@Override
-	public String toString() {
-		return "ProjectModel [name=" + name + ", path=" + path + ", packages=" + packages + ", classRelations="
-				+ classRelations + "]";
-	}
 }

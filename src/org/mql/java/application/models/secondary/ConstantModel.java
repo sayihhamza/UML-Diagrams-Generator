@@ -13,9 +13,4 @@ public class ConstantModel implements Model {
 	public Object getName() {
 		return name;
 	}
-
-	@Override
-	public String toString() {
-		return "ConstantModel [name=" + name + "]";
-	}
 }

@@ -42,10 +42,4 @@ public class FieldModel implements Model {
 	public Type getGenericType() {
 		return genericType;
 	}
-
-	@Override
-	public String toString() {
-		return "FieldModel [name=" + name + ", modifier=" + modifier + ", modifierString=" + modifierString + ", type="
-				+ type + ", genericType=" + genericType + "]";
-	}
 }

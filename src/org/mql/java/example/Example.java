@@ -5,6 +5,7 @@ import java.io.File;
 import org.mql.java.application.models.primary.ProjectModel;
 import org.mql.java.application.parsers.reflection.ProjectParser;
 
+@SuppressWarnings("unused")
 public class Example {
 
 	public Example() {
@@ -17,7 +18,6 @@ public class Example {
 		ProjectParser projectParser = new ProjectParser();
 		projectParser.setTargetProject(projectFile);
 		ProjectModel projectModel= (ProjectModel) projectParser.parse();
-		System.out.println(projectModel);
 	}
 
 	public static void main(String[] args) {

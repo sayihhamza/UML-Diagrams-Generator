@@ -21,9 +21,4 @@ public class EnumModel extends ClassModel {
 	public void setConstants(List<ConstantModel> constants) {
 		this.constants = constants;
 	}
-
-	@Override
-	public String toString() {
-		return "EnumModel [name =" + super.getName() + ", constants=" + constants + "]";
-	}
 }

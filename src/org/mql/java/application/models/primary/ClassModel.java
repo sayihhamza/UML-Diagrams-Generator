@@ -64,10 +64,4 @@ public class ClassModel implements Model {
 	public void setInterfaces(List<ClassModel> interfaces) {
 		this.interfaces = interfaces;
 	}
-
-	@Override
-	public String toString() {
-		return "ClassModel [name=" + name + ", parentClass=" + parentClass + ", fields=" + fields + ", methods="
-				+ methods + ", interfaces=" + interfaces + "]";
-	}
 }
