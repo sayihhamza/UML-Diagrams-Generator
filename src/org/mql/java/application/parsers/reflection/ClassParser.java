@@ -20,7 +20,7 @@ public class ClassParser implements Parser {
 
 	private Class<?> targetClass;
 	private String name;
-	
+
 	public String getName() {
 		return name;
 	}
@@ -28,13 +28,10 @@ public class ClassParser implements Parser {
 	public Class<?> getTargetClass() {
 		return targetClass;
 	}
-	
-	public void setTargetClass(File classFile) {
-		this.targetClass = ClassLoader.loadClass(classFile);
-		this.name = targetClass.getName();
-	}
 
-	public Object parse() {
+	public Object parse(File file) {
+		this.targetClass = ClassLoader.loadClass(file);
+		this.name = targetClass.getName();
 		if (targetClass != null) {
 			if (targetClass.isEnum()) {
 				EnumModel enumModel = new EnumModel(name);
@@ -60,10 +57,12 @@ public class ClassParser implements Parser {
 
 	private void parseConstants(EnumModel enumModel) {
 		List<ConstantModel> constantModels = new Vector<>();
-		for (Object constant : targetClass.getEnumConstants()) {
-			constantModels.add(new ConstantModel(constant));
+		if (targetClass.getEnumConstants() != null) {
+			for (Object constant : targetClass.getEnumConstants()) {
+				constantModels.add(new ConstantModel(constant));
+			}
+			enumModel.setConstants(constantModels);
 		}
-		enumModel.setConstants(constantModels);
 	}
 
 	private void parseFields(ClassModel classModel) {
@@ -76,7 +75,7 @@ public class ClassParser implements Parser {
 
 	private void parseMethods(ClassModel classModel) {
 		List<MethodModel> methodModels = new Vector<>();
-		for (Method method : targetClass.getDeclaredMethods()) {	
+		for (Method method : targetClass.getDeclaredMethods()) {
 			methodModels.add(new MethodModel(method));
 		}
 		classModel.setMethods(methodModels);
@@ -87,7 +86,7 @@ public class ClassParser implements Parser {
 			classModel.getMethods().add(new MethodModel(constructor));
 		}
 	}
-	
+
 	private void parseInterfaces(ClassModel classModel) {
 		List<ClassModel> interfaces = new Vector<>();
 		for (Class<?> interfac : targetClass.getInterfaces()) {
@@ -95,7 +94,7 @@ public class ClassParser implements Parser {
 		}
 		classModel.setInterfaces(interfaces);
 	}
-	
+
 	private void parseParentClass(ClassModel classModel) {
 		ClassModel parentClass = new ClassModel(targetClass.getSuperclass().getName());
 		classModel.setParentClass(parentClass);

@@ -11,60 +11,44 @@ import org.mql.java.application.models.primary.RelationModel;
 import org.mql.java.application.parsers.Parser;
 import org.mql.java.application.utils.FileUtils;
 import org.mql.java.application.utils.ReflectionUtils;
-import org.mql.java.application.utils.StringUtils;
 
 public class ProjectParser implements Parser {
 
-	private File targetProject;
-	private String name;
-
-	public String getName() {
-		return name;
-	}
-	
-	public File getTargetProject() {
-		return targetProject;
-	}
-
-	public void setTargetProject(File targetProject) {
-		this.targetProject = targetProject;
-		this.name = StringUtils.toProjectName(targetProject.getAbsolutePath());
-	}
-
-	public Object parse() {
-		if (FileUtils.isProjectDirectory(targetProject)) {
-			ProjectModel projectModel = new ProjectModel(targetProject, name);
-			parsePackages(projectModel);
-			parseRelations(projectModel);
-			return projectModel;
+	public Object parse(File file) {
+		if (FileUtils.isProjectDirectory(file)) {
+			ProjectModel theReference = ProjectModel.getInstance(file);
+			parsePackages(file, theReference);
+			parseRelations(theReference);
+			return theReference;
 		}
 		return null;
 	}
-	
-	private void parsePackages(ProjectModel projectModel) {
+
+	private void parsePackages(File projectFile, ProjectModel projectModel) {
 		List<PackageModel> packageModels = new Vector<>();
 		List<File> projectPackages = new Vector<>();
-		
-		FileUtils.getAllPackages(targetProject, projectPackages);
+
+		FileUtils.getAllPackages(projectFile, projectPackages);
 		for (File packageFile : projectPackages) {
 			PackageParser packageParser = new PackageParser();
-			packageParser.setTargetPackage(packageFile);
-			packageModels.add((PackageModel) packageParser.parse());
+			if (((PackageModel) packageParser.parse(packageFile)).getClasses().size() > 0) {
+				packageModels.add((PackageModel) packageParser.parse(packageFile));
+			}
 		}
 		projectModel.setPackages(packageModels);
 	}
-	
+
 	private void parseRelations(ProjectModel projectModel) {
 		List<RelationModel> relationModels = new Vector<>();
 		List<ClassModel> projectClasses = ReflectionUtils.extractAllClasses(projectModel.getPackages());
-		
+
 		for (ClassModel firstClass : projectClasses) {
 			for (ClassModel secondClass : projectClasses) {
 				RelationParser relationParser = new RelationParser(firstClass, secondClass);
-				relationModels.add(relationParser.parse());
+				if (relationParser.parse() != null)
+					relationModels.add(relationParser.parse());
 			}
 		}
-		relationModels.remove(null);
 		projectModel.setClassRelations(relationModels);
 	}
 }

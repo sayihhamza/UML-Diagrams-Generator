@@ -2,25 +2,32 @@ package org.mql.java.application;
 
 import java.io.File;
 
-import org.mql.java.application.models.primary.ProjectModel;
+import org.mql.java.application.parsers.Parser;
 import org.mql.java.application.parsers.reflection.ProjectParser;
-
-@SuppressWarnings("unused")
+import org.mql.java.application.parsers.xml.ProjectDOMParser;
+import org.mql.java.application.utils.FileUtils;
 
 public class Main {
-
-	public Main() {
-		exploreProject();
+	private static void parseProject(File file){
+		Parser parser = new ProjectParser();
+		parser.parse(file);
+	}
+	private static void generateXMLTree(){
+		ProjectDOMParser domParser = new ProjectDOMParser();
+		domParser.generate();
 	}
 
-	private void exploreProject() {
-		File projectFile = new File("C:\\Users\\esayi\\eclipse-workspace\\UML Diagrams Generator\\bin\\");
-		ProjectParser projectParser = new ProjectParser();
-		projectParser.setTargetProject(projectFile);
-		ProjectModel projectModel = (ProjectModel) projectParser.parse();
+	private static void startProcessing(File file) {
+		parseProject(file);
+		generateXMLTree();
 	}
 
 	public static void main(String[] args) {
-		new Main();
+		if(args.length == 1) {
+			File file = new File(args[0]);
+			if(FileUtils.isProjectDirectory(file)) {
+				startProcessing(file);
+			}
+		}
 	}
 }

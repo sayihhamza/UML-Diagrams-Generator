@@ -12,9 +12,11 @@ public class ClassModel implements Model {
 
 	private final String name;
 
-	private ClassModel parentClass;
 	private List<FieldModel> fields;
 	private List<MethodModel> methods;
+	
+	
+	private ClassModel parentClass;
 	private List<ClassModel> interfaces;
 
 	public ClassModel(String name) {

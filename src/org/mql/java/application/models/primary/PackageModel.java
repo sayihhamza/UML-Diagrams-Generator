@@ -4,19 +4,23 @@ import java.util.List;
 import java.util.Vector;
 
 import org.mql.java.application.models.Model;
+import org.mql.java.application.utils.StringUtils;
 
 public class PackageModel implements Model {
 
-	private final String name;
+	private String name;
 	private List<ClassModel> classes;
 
-	public PackageModel(String name) {
-		this.name = name;
+	public PackageModel() {
 		this.classes = new Vector<>();
 	}
 
 	public String getName() {
 		return name;
+	}
+	
+	public void setName(String fileName) {
+		this.name = StringUtils.toPackageName(fileName);
 	}
 
 	public List<ClassModel> getClasses() {
@@ -26,4 +30,12 @@ public class PackageModel implements Model {
 	public void setClasses(List<ClassModel> classes) {
 		this.classes = classes;
 	}
+//	@Override
+//	public String toString() {
+//		StringBuffer temp = new StringBuffer("Package : " + getName());
+//		for(ClassModel clazz : classes) {
+//			temp.append("\n\t" + clazz);
+//		}
+//		return temp.toString();
+//	}
 }

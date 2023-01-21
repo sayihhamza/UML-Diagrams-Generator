@@ -3,11 +3,10 @@ package org.mql.java.application.parsers.reflection;
 import org.mql.java.application.models.primary.ClassModel;
 import org.mql.java.application.models.primary.RelationModel;
 import org.mql.java.application.models.secondary.FieldModel;
-import org.mql.java.application.parsers.Parser;
 import org.mql.java.application.types.RelationType;
 import org.mql.java.application.utils.ReflectionUtils;
 
-public class RelationParser implements Parser {
+public class RelationParser {
 
 	private ClassModel firstClass;
 	private ClassModel secondClass;

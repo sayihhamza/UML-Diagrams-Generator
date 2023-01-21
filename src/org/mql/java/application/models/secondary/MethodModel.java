@@ -8,13 +8,14 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.mql.java.application.models.Model;
-import org.mql.java.application.types.ModifierTypes;
+import org.mql.java.application.utils.ModifierUtils;
 
 public class MethodModel implements Model {
 
 	private final String name;
-	
+
 	private final List<Parameter> parameters;
+	private final List<Type> parameterTypes;
 	private final int modifier;
 	private final String modifierString;
 	private final boolean isConstructor;
@@ -23,17 +24,19 @@ public class MethodModel implements Model {
 	public MethodModel(Method method) {
 		this.name = method.getName();
 		this.parameters = Arrays.asList(method.getParameters());
+		this.parameterTypes = Arrays.asList(method.getGenericParameterTypes());
 		this.modifier = method.getModifiers();
-		this.modifierString = ModifierTypes.valueOf(method.getModifiers());
+		this.modifierString = ModifierUtils.resolveModifier(modifier);
 		this.isConstructor = false;
-		this.returnType= method.getReturnType();
+		this.returnType = method.getGenericReturnType();
 	}
-	
+
 	public MethodModel(Constructor<?> constructor) {
 		this.name = constructor.getName();
 		this.parameters = Arrays.asList(constructor.getParameters());
+		this.parameterTypes = Arrays.asList(constructor.getGenericParameterTypes());
 		this.modifier = constructor.getModifiers();
-		this.modifierString =  ModifierTypes.valueOf(constructor.getModifiers());
+		this.modifierString = ModifierUtils.resolveModifier(modifier);
 		this.isConstructor = true;
 		this.returnType = null;
 	}
@@ -60,5 +63,9 @@ public class MethodModel implements Model {
 
 	public List<Parameter> getParameters() {
 		return parameters;
+	}
+
+	public List<Type> getParameterTypes() {
+		return parameterTypes;
 	}
 }

@@ -10,7 +10,7 @@ public class ConstantModel implements Model {
 		this.name = constant;
 	}
 
-	public Object getName() {
-		return name;
+	public String getName() {
+		return name.toString();
 	}
 }

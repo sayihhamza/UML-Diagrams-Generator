@@ -17,8 +17,8 @@ public class RelationModel implements Model {
 		this.relationType = realtionType;
 	}
 
-	public RelationType getName() {
-		return relationType;
+	public String getName() {
+		return relationType.name();
 	}
 
 	public RelationType getRelationType() {

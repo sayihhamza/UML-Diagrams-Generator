@@ -4,7 +4,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Type;
 
 import org.mql.java.application.models.Model;
-import org.mql.java.application.types.ModifierTypes;
+import org.mql.java.application.utils.ModifierUtils;
 
 public class FieldModel implements Model {
 
@@ -18,7 +18,7 @@ public class FieldModel implements Model {
 	public FieldModel(Field field) {
 		this.name = field.getName();
 		this.modifier = field.getModifiers();
-		this.modifierString = ModifierTypes.valueOf(field.getModifiers());
+		this.modifierString = ModifierUtils.resolveModifier(modifier);
 		this.type = field.getType();
 		this.genericType = field.getGenericType();
 	}

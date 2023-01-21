@@ -58,9 +58,11 @@ public class ReflectionUtils {
 		boolean isInnerClass = isInnerClassOf(firstClass, secondClass);
 		boolean isFinalField = false;
 		if (relationModel != null) {
-			if (relationModel.getRelationType().equals(RelationType.AGGREGATION)) {
-				if (!relationModel.getRelationField().getName().contains("this$")) {
-					isFinalField = isFinal(relationModel.getRelationField());
+			if (relationModel.getRelationType() != null) {
+				if (relationModel.getRelationType().equals(RelationType.AGGREGATION)) {
+					if (!relationModel.getRelationField().getName().contains("this$")) {
+						isFinalField = isFinal(relationModel.getRelationField());
+					}
 				}
 			}
 		}
@@ -112,8 +114,8 @@ public class ReflectionUtils {
 		}
 		return Class.class;
 	}
-	
-	public static List<ClassModel> extractAllClasses(List<PackageModel> packages){
+
+	public static List<ClassModel> extractAllClasses(List<PackageModel> packages) {
 		List<ClassModel> classModels = new Vector<>();
 		for (PackageModel packageModel : packages) {
 			classModels.addAll(packageModel.getClasses());
