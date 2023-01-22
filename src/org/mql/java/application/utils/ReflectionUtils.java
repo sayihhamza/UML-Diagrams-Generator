@@ -60,9 +60,7 @@ public class ReflectionUtils {
 		if (relationModel != null) {
 			if (relationModel.getRelationType() != null) {
 				if (relationModel.getRelationType().equals(RelationType.AGGREGATION)) {
-					if (!relationModel.getRelationField().getName().contains("this$")) {
-						isFinalField = isFinal(relationModel.getRelationField());
-					}
+					isFinalField = isFinal(relationModel.getRelationField());
 				}
 			}
 		}
@@ -103,7 +101,7 @@ public class ReflectionUtils {
 	}
 
 	public static Class<?> getGenericType(Type inputType) {
-		return ReflectionUtils.genericTypeCastableToClass(((ParameterizedType) inputType).getActualTypeArguments()[0]);
+		return genericTypeCastableToClass(((ParameterizedType) inputType).getActualTypeArguments()[0]);
 	}
 
 	public static Class<?> genericTypeCastableToClass(Type type) {
@@ -112,7 +110,7 @@ public class ReflectionUtils {
 		} else if (type instanceof ParameterizedType) {
 			return genericTypeCastableToClass(((ParameterizedType) type).getActualTypeArguments()[0]);
 		}
-		return Class.class;
+		return type.getClass();
 	}
 
 	public static List<ClassModel> extractAllClasses(List<PackageModel> packages) {

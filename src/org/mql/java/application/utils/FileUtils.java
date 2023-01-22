@@ -9,8 +9,9 @@ public class FileUtils {
 		if (dirctory.exists() && dirctory.isDirectory()) {
 			for (File childDirectory : dirctory.listFiles()) {
 				if (childDirectory.isDirectory()) {
-					if (isPackageDirectory(childDirectory))
-						allPackages.add(childDirectory);
+					if (isPackageDirectory(childDirectory)) {
+						allPackages.add(childDirectory);						
+					}
 					getAllPackages(childDirectory, allPackages);
 				}
 			}
@@ -41,18 +42,20 @@ public class FileUtils {
 	}
 
 	public static boolean isPackageDirectory(File packageDirectory) {
-		if (packageDirectory.exists() && packageDirectory.isDirectory()) {
+		if (packageDirectory.isDirectory()) {
 			for (File childFile : packageDirectory.listFiles()) {
-				if (isClassFile(childFile))
+				if (isClassFile(childFile)) {
 					return true;
+				}
 			}
 		}
 		return true;
 	}
 
 	public static boolean isClassFile(File classFile) {
-		if (classFile.exists() && classFile.getAbsolutePath().endsWith(".class"))
-			return true;
+		if (classFile.getAbsolutePath().endsWith(".class")) {
+			return true;			
+		}
 		return false;
 	}
 }

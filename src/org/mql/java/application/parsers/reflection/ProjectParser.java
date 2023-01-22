@@ -17,31 +17,31 @@ public class ProjectParser implements Parser {
 	public Object parse(File file) {
 		if (FileUtils.isProjectDirectory(file)) {
 			ProjectModel theReference = ProjectModel.getInstance(file);
-			parsePackages(file, theReference);
-			parseRelations(theReference);
+			exctractPackages(file, theReference);
+			exctractRelations(theReference);
 			return theReference;
 		}
 		return null;
 	}
 
-	private void parsePackages(File projectFile, ProjectModel projectModel) {
+	private void exctractPackages(File projectFile, ProjectModel projectModel) {
 		List<PackageModel> packageModels = new Vector<>();
 		List<File> projectPackages = new Vector<>();
 
 		FileUtils.getAllPackages(projectFile, projectPackages);
 		for (File packageFile : projectPackages) {
-			PackageParser packageParser = new PackageParser();
-			if (((PackageModel) packageParser.parse(packageFile)).getClasses().size() > 0) {
-				packageModels.add((PackageModel) packageParser.parse(packageFile));
+			Parser packageParser = new PackageParser();
+			PackageModel packageModel = (PackageModel) packageParser.parse(packageFile);
+			if (packageModel.getClasses().size() > 0) {
+				packageModels.add(packageModel);
 			}
 		}
 		projectModel.setPackages(packageModels);
 	}
 
-	private void parseRelations(ProjectModel projectModel) {
+	private void exctractRelations(ProjectModel projectModel) {
 		List<RelationModel> relationModels = new Vector<>();
 		List<ClassModel> projectClasses = ReflectionUtils.extractAllClasses(projectModel.getPackages());
-
 		for (ClassModel firstClass : projectClasses) {
 			for (ClassModel secondClass : projectClasses) {
 				RelationParser relationParser = new RelationParser(firstClass, secondClass);
