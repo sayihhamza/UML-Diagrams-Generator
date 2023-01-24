@@ -1,3 +1,3 @@
 # UML-Diagrams-Generator
 
-![Alt text](./SwingUI Demo.png?raw=true "Title")
+![Alt text](SwingUI Demo.png?raw=true "Title")
