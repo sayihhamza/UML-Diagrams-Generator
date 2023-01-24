@@ -1,3 +1,3 @@
 # UML-Diagrams-Generator
 
-![Screenshot](SwingUI Demo.png)
+![Screenshot]SwingUI Demo.png
