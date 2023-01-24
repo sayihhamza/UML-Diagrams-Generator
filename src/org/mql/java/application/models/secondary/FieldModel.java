@@ -8,12 +8,18 @@ import org.mql.java.application.utils.ModifierUtils;
 
 public class FieldModel implements Model {
 
-	private final String name;
+	private String name;
 
-	private final int modifier;
-	private final String modifierString;
-	private final Type type;
-	private final Type genericType;
+	private int modifier;
+	private String modifierString;
+	private String typeName;
+
+	private Type type;
+	private Type genericType;
+
+	public FieldModel(String name) {
+		this.name = name;
+	}
 
 	public FieldModel(Field field) {
 		this.name = field.getName();
@@ -21,10 +27,27 @@ public class FieldModel implements Model {
 		this.modifierString = ModifierUtils.resolveModifier(modifier);
 		this.type = field.getType();
 		this.genericType = field.getGenericType();
+		this.typeName = genericType.getTypeName();
 	}
 
 	public String getName() {
 		return name;
+	}
+
+	public String getTypeName() {
+		return typeName;
+	}
+
+	public void setTypeName(String typeName) {
+		this.typeName = typeName;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setModifierString(String modifierString) {
+		this.modifierString = modifierString;
 	}
 
 	public String getModifierString() {

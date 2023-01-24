@@ -11,8 +11,9 @@ public class PackageModel implements Model {
 	private String name;
 	private List<ClassModel> classes;
 
-	public PackageModel() {
+	public PackageModel(String name) {
 		this.classes = new Vector<>();
+		this.name = name;
 	}
 
 	public String getName() {

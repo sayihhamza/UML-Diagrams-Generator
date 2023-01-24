@@ -46,11 +46,28 @@ public class XMLNode {
 			System.out.println("Erreur : " + e.getMessage());
 		}
 	}
+	
+	public XMLNode(File source) {
+		DocumentBuilderFactory factory = DocumentBuilderFactory.newDefaultInstance();
+		
+		try {
+			DocumentBuilder builder = factory.newDocumentBuilder();
+			document = builder.parse(source);
+		 	node = document.getFirstChild();
+		 			 	
+		 	while (node.getNodeType() != Node.ELEMENT_NODE) {
+		 		node = node.getNextSibling();
+		 	}
+		} catch (Exception e) {
+			System.out.println("Erreur : " + e.getMessage());
+		}
+	}
 
 	public File generate() {
 		try {
-			File file = new File(getClass().getProtectionDomain().getCodeSource().getLocation().toURI().getPath()
-					+ "\\projectModel.xml");
+//			File file = new File(getClass().getProtectionDomain().getCodeSource().getLocation().toURI().getPath()
+//					+ "\\projectModel.xml");
+			File file = new File("resources//projectModel.xml");
 			if (!file.exists()) {
 				file.createNewFile();
 			}

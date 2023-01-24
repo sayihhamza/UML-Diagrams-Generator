@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xsd2ecore:XSD2EcoreMappingRoot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsd2ecore="http://www.eclipse.org/emf/2002/XSD2Ecore" inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#/"
+    outputs="ProjectModel.ecore#/" topToBottom="true">
+  <nested inputs="bundleentry://844.fwk358351349/cache/www.w3.org/2001/XMLSchema.xsd#//string;XSDSimpleTypeDefinition=9"
+      outputs="http://www.eclipse.org/emf/2003/XMLType#//String"/>
+  <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//visibility;XSDSimpleTypeDefinition=1"
+      outputs="ProjectModel.ecore#//Visibility">
+    <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//visibility;XSDSimpleTypeDefinition=1/XSDEnumerationFacet"
+        outputs="ProjectModel.ecore#//Visibility/_"/>
+    <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//visibility;XSDSimpleTypeDefinition=1/XSDEnumerationFacet=1"
+        outputs="ProjectModel.ecore#//Visibility/_1"/>
+    <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//visibility;XSDSimpleTypeDefinition=1/XSDEnumerationFacet=2"
+        outputs="ProjectModel.ecore#//Visibility/_2"/>
+    <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//visibility;XSDSimpleTypeDefinition=1/XSDEnumerationFacet=3"
+        outputs="ProjectModel.ecore#//Visibility/_3"/>
+  </nested>
+  <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//field;XSDComplexTypeDefinition=7"
+      outputs="ProjectModel.ecore#//Field">
+    <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//field;XSDComplexTypeDefinition=7/XSDAttributeUse"
+        outputs="ProjectModel.ecore#//Field/name"/>
+    <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//field;XSDComplexTypeDefinition=7/XSDAttributeUse=1"
+        outputs="ProjectModel.ecore#//Field/type"/>
+    <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//field;XSDComplexTypeDefinition=7/XSDAttributeUse=2"
+        outputs="ProjectModel.ecore#//Field/visibility"/>
+  </nested>
+  <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//fields;XSDComplexTypeDefinition=6"
+      outputs="ProjectModel.ecore#//Fields">
+    <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//fields;XSDComplexTypeDefinition=6/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="ProjectModel.ecore#//Fields/field"/>
+  </nested>
+  <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//parameter;XSDComplexTypeDefinition=11"
+      outputs="ProjectModel.ecore#//Parameter">
+    <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//parameter;XSDComplexTypeDefinition=11/XSDAttributeUse"
+        outputs="ProjectModel.ecore#//Parameter/type"/>
+  </nested>
+  <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//parameters;XSDComplexTypeDefinition=10"
+      outputs="ProjectModel.ecore#//Parameters">
+    <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//parameters;XSDComplexTypeDefinition=10/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="ProjectModel.ecore#//Parameters/parameter"/>
+  </nested>
+  <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//method;XSDComplexTypeDefinition=9"
+      outputs="ProjectModel.ecore#//Method">
+    <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//method;XSDComplexTypeDefinition=9/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="ProjectModel.ecore#//Method/parameters"/>
+    <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//method;XSDComplexTypeDefinition=9/XSDAttributeUse"
+        outputs="ProjectModel.ecore#//Method/name"/>
+    <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//method;XSDComplexTypeDefinition=9/XSDAttributeUse=1"
+        outputs="ProjectModel.ecore#//Method/returnType"/>
+    <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//method;XSDComplexTypeDefinition=9/XSDAttributeUse=2"
+        outputs="ProjectModel.ecore#//Method/visibility"/>
+  </nested>
+  <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//methods;XSDComplexTypeDefinition=8"
+      outputs="ProjectModel.ecore#//Methods">
+    <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//methods;XSDComplexTypeDefinition=8/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="ProjectModel.ecore#//Methods/method"/>
+  </nested>
+  <nested inputs="bundleentry://844.fwk358351349/cache/www.w3.org/2001/XMLSchema.xsd#//ID;XSDSimpleTypeDefinition=37"
+      outputs="http://www.eclipse.org/emf/2003/XMLType#//ID"/>
+  <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//modelType;XSDComplexTypeDefinition=4"
+      outputs="ProjectModel.ecore#//ModelType">
+    <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//modelType;XSDComplexTypeDefinition=4/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="ProjectModel.ecore#//ModelType/fields"/>
+    <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//modelType;XSDComplexTypeDefinition=4/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="ProjectModel.ecore#//ModelType/methods"/>
+    <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//modelType;XSDComplexTypeDefinition=4/XSDAttributeUse"
+        outputs="ProjectModel.ecore#//ModelType/name"/>
+  </nested>
+  <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//constant;XSDComplexTypeDefinition=13"
+      outputs="ProjectModel.ecore#//Constant">
+    <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//constant;XSDComplexTypeDefinition=13/XSDAttributeUse"
+        outputs="ProjectModel.ecore#//Constant/value"/>
+  </nested>
+  <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//constants;XSDComplexTypeDefinition=12"
+      outputs="ProjectModel.ecore#//Constants">
+    <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//constants;XSDComplexTypeDefinition=12/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="ProjectModel.ecore#//Constants/constant"/>
+  </nested>
+  <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//enumeration;XSDComplexTypeDefinition=5"
+      outputs="ProjectModel.ecore#//Enumeration">
+    <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//enumeration;XSDComplexTypeDefinition=5/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="ProjectModel.ecore#//Enumeration/constants"/>
+    <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//enumeration;XSDComplexTypeDefinition=5/XSDAttributeUse"
+        outputs="ProjectModel.ecore#//Enumeration/name"/>
+  </nested>
+  <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//classes;XSDComplexTypeDefinition=3"
+      outputs="ProjectModel.ecore#//Classes">
+    <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//classes;XSDComplexTypeDefinition=3/XSDParticle"
+        outputs="ProjectModel.ecore#//Classes/group"/>
+    <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//classes;XSDComplexTypeDefinition=3/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="ProjectModel.ecore#//Classes/class"/>
+    <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//classes;XSDComplexTypeDefinition=3/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="ProjectModel.ecore#//Classes/interface"/>
+    <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//classes;XSDComplexTypeDefinition=3/XSDParticle/XSDModelGroup/XSDParticle=2"
+        outputs="ProjectModel.ecore#//Classes/enumeration"/>
+  </nested>
+  <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//package;XSDComplexTypeDefinition=2"
+      outputs="ProjectModel.ecore#//Package">
+    <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//package;XSDComplexTypeDefinition=2/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="ProjectModel.ecore#//Package/classes"/>
+    <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//package;XSDComplexTypeDefinition=2/XSDAttributeUse"
+        outputs="ProjectModel.ecore#//Package/name"/>
+  </nested>
+  <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//packages;XSDComplexTypeDefinition=1"
+      outputs="ProjectModel.ecore#//Packages">
+    <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//packages;XSDComplexTypeDefinition=1/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="ProjectModel.ecore#//Packages/package"/>
+  </nested>
+  <nested inputs="bundleentry://844.fwk358351349/cache/www.w3.org/2001/XMLSchema.xsd#//IDREF;XSDSimpleTypeDefinition=38"
+      outputs="http://www.eclipse.org/emf/2003/XMLType#//IDREF"/>
+  <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//relationType;XSDSimpleTypeDefinition"
+      outputs="ProjectModel.ecore#//RelationType">
+    <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//relationType;XSDSimpleTypeDefinition/XSDEnumerationFacet"
+        outputs="ProjectModel.ecore#//RelationType/DEPENDENCY"/>
+    <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//relationType;XSDSimpleTypeDefinition/XSDEnumerationFacet=1"
+        outputs="ProjectModel.ecore#//RelationType/ASSOCIATION"/>
+    <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//relationType;XSDSimpleTypeDefinition/XSDEnumerationFacet=2"
+        outputs="ProjectModel.ecore#//RelationType/AGGREGATION"/>
+    <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//relationType;XSDSimpleTypeDefinition/XSDEnumerationFacet=3"
+        outputs="ProjectModel.ecore#//RelationType/COMPOSITION"/>
+    <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//relationType;XSDSimpleTypeDefinition/XSDEnumerationFacet=4"
+        outputs="ProjectModel.ecore#//RelationType/REALISATION"/>
+    <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//relationType;XSDSimpleTypeDefinition/XSDEnumerationFacet=5"
+        outputs="ProjectModel.ecore#//RelationType/GENERALIZATION"/>
+  </nested>
+  <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//relation;XSDComplexTypeDefinition=15"
+      outputs="ProjectModel.ecore#//Relation">
+    <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//relation;XSDComplexTypeDefinition=15/XSDAttributeUse=1"
+        outputs="ProjectModel.ecore#//Relation/child"/>
+    <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//relation;XSDComplexTypeDefinition=15/XSDAttributeUse"
+        outputs="ProjectModel.ecore#//Relation/parent"/>
+    <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//relation;XSDComplexTypeDefinition=15/XSDAttributeUse=2"
+        outputs="ProjectModel.ecore#//Relation/type"/>
+  </nested>
+  <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//relations;XSDComplexTypeDefinition=14"
+      outputs="ProjectModel.ecore#//Relations">
+    <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//relations;XSDComplexTypeDefinition=14/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="ProjectModel.ecore#//Relations/relation"/>
+  </nested>
+  <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//project;XSDComplexTypeDefinition"
+      outputs="ProjectModel.ecore#//Project">
+    <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//project;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="ProjectModel.ecore#//Project/packages"/>
+    <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//project;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="ProjectModel.ecore#//Project/relations"/>
+    <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//project;XSDComplexTypeDefinition/XSDAttributeUse"
+        outputs="ProjectModel.ecore#//Project/name"/>
+  </nested>
+  <nested inputs="file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd#//project;XSDElementDeclaration"
+      outputs="ProjectModel.ecore#//DocumentRoot/project"/>
+</xsd2ecore:XSD2EcoreMappingRoot>

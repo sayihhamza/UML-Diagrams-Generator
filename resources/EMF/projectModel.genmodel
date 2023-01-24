@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/UML Diagram Generator/src" modelPluginID="UML_Diagram_Generator"
+    modelName="ProjectModel" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.xsd.ecore.importer" complianceLevel="5.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel/importer/org.eclipse.xsd.ecore.importer">
+    <details key="createMap" value="true"/>
+  </genAnnotations>
+  <foreignModel>file:/C:/Users/esayi/eclipse-workspace/UML%20Diagrams%20Generator/resources/projectModel.xsd</foreignModel>
+  <genPackages prefix="ProjectModel" resource="XML" disposableProviderFactory="true"
+      ecorePackage="ProjectModel.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ProjectModel.ecore#//RelationType">
+      <genEnumLiterals ecoreEnumLiteral="ProjectModel.ecore#//RelationType/DEPENDENCY"/>
+      <genEnumLiterals ecoreEnumLiteral="ProjectModel.ecore#//RelationType/ASSOCIATION"/>
+      <genEnumLiterals ecoreEnumLiteral="ProjectModel.ecore#//RelationType/AGGREGATION"/>
+      <genEnumLiterals ecoreEnumLiteral="ProjectModel.ecore#//RelationType/COMPOSITION"/>
+      <genEnumLiterals ecoreEnumLiteral="ProjectModel.ecore#//RelationType/REALISATION"/>
+      <genEnumLiterals ecoreEnumLiteral="ProjectModel.ecore#//RelationType/GENERALIZATION"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ProjectModel.ecore#//Visibility">
+      <genEnumLiterals ecoreEnumLiteral="ProjectModel.ecore#//Visibility/_"/>
+      <genEnumLiterals ecoreEnumLiteral="ProjectModel.ecore#//Visibility/_1"/>
+      <genEnumLiterals ecoreEnumLiteral="ProjectModel.ecore#//Visibility/_2"/>
+      <genEnumLiterals ecoreEnumLiteral="ProjectModel.ecore#//Visibility/_3"/>
+    </genEnums>
+    <genDataTypes ecoreDataType="ProjectModel.ecore#//RelationTypeObject"/>
+    <genDataTypes ecoreDataType="ProjectModel.ecore#//VisibilityObject"/>
+    <genClasses ecoreClass="ProjectModel.ecore#//Classes">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute ProjectModel.ecore#//Classes/group"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ProjectModel.ecore#//Classes/class"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ProjectModel.ecore#//Classes/interface"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ProjectModel.ecore#//Classes/enumeration"/>
+    </genClasses>
+    <genClasses ecoreClass="ProjectModel.ecore#//Constant">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProjectModel.ecore#//Constant/value"/>
+    </genClasses>
+    <genClasses ecoreClass="ProjectModel.ecore#//Constants">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProjectModel.ecore#//Constants/constant"/>
+    </genClasses>
+    <genClasses ecoreClass="ProjectModel.ecore#//DocumentRoot">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute ProjectModel.ecore#//DocumentRoot/mixed"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ProjectModel.ecore#//DocumentRoot/xMLNSPrefixMap"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ProjectModel.ecore#//DocumentRoot/xSISchemaLocation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProjectModel.ecore#//DocumentRoot/project"/>
+    </genClasses>
+    <genClasses ecoreClass="ProjectModel.ecore#//Enumeration">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProjectModel.ecore#//Enumeration/constants"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProjectModel.ecore#//Enumeration/name"/>
+    </genClasses>
+    <genClasses ecoreClass="ProjectModel.ecore#//Field">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProjectModel.ecore#//Field/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProjectModel.ecore#//Field/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProjectModel.ecore#//Field/visibility"/>
+    </genClasses>
+    <genClasses ecoreClass="ProjectModel.ecore#//Fields">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProjectModel.ecore#//Fields/field"/>
+    </genClasses>
+    <genClasses ecoreClass="ProjectModel.ecore#//Method">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProjectModel.ecore#//Method/parameters"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProjectModel.ecore#//Method/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProjectModel.ecore#//Method/returnType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProjectModel.ecore#//Method/visibility"/>
+    </genClasses>
+    <genClasses ecoreClass="ProjectModel.ecore#//Methods">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProjectModel.ecore#//Methods/method"/>
+    </genClasses>
+    <genClasses ecoreClass="ProjectModel.ecore#//ModelType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProjectModel.ecore#//ModelType/fields"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProjectModel.ecore#//ModelType/methods"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProjectModel.ecore#//ModelType/name"/>
+    </genClasses>
+    <genClasses ecoreClass="ProjectModel.ecore#//Package">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProjectModel.ecore#//Package/classes"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProjectModel.ecore#//Package/name"/>
+    </genClasses>
+    <genClasses ecoreClass="ProjectModel.ecore#//Packages">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProjectModel.ecore#//Packages/package"/>
+    </genClasses>
+    <genClasses ecoreClass="ProjectModel.ecore#//Parameter">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProjectModel.ecore#//Parameter/type"/>
+    </genClasses>
+    <genClasses ecoreClass="ProjectModel.ecore#//Parameters">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProjectModel.ecore#//Parameters/parameter"/>
+    </genClasses>
+    <genClasses ecoreClass="ProjectModel.ecore#//Project">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProjectModel.ecore#//Project/packages"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProjectModel.ecore#//Project/relations"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProjectModel.ecore#//Project/name"/>
+    </genClasses>
+    <genClasses ecoreClass="ProjectModel.ecore#//Relation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProjectModel.ecore#//Relation/child"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProjectModel.ecore#//Relation/parent"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProjectModel.ecore#//Relation/type"/>
+    </genClasses>
+    <genClasses ecoreClass="ProjectModel.ecore#//Relations">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProjectModel.ecore#//Relations/relation"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

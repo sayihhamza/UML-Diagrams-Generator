@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?><project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="example" xsi:noNamespaceSchemaLocation="projectModel.xsd">
+    <packages>
+        <package name="org.mql.java.example.classes">
+            <classes>
+                <class name="org.mql.java.example.classes.Bike..FuelBike">
+                    <fields/>
+                    <methods>
+                        <method name="org.mql.java.example.classes.Bike$FuelBike" returnType="" visibility="+">
+                            <parameters>
+                                <parameter type="org.mql.java.example.classes.Bike"/>
+                            </parameters>
+                        </method>
+                    </methods>
+                </class>
+                <class name="org.mql.java.example.classes.Bike">
+                    <fields>
+                        <field name="driver" type="org.mql.java.example.classes.Driver" visibility="-"/>
+                        <field name="wheels" type="java.util.List&lt;org.mql.java.example.classes.Wheel&gt;" visibility="-"/>
+                        <field name="energeyType" type="org.mql.java.example.enums.EnergeyType" visibility="-"/>
+                    </fields>
+                    <methods>
+                        <method name="toString" returnType="java.lang.String" visibility="+"/>
+                        <method name="makeSound" returnType="void" visibility="+"/>
+                        <method name="testDependency" returnType="void" visibility="~">
+                            <parameters>
+                                <parameter type="org.mql.java.example.classes.Car"/>
+                                <parameter type="org.mql.java.example.classes.Driver"/>
+                            </parameters>
+                        </method>
+                        <method name="org.mql.java.example.classes.Bike" returnType="" visibility="+">
+                            <parameters>
+                                <parameter type="org.mql.java.example.classes.Driver"/>
+                                <parameter type="java.util.List&lt;org.mql.java.example.classes.Wheel&gt;"/>
+                            </parameters>
+                        </method>
+                    </methods>
+                </class>
+                <class name="org.mql.java.example.classes.Car">
+                    <fields>
+                        <field name="driver" type="org.mql.java.example.classes.Driver" visibility="-"/>
+                        <field name="wheels" type="java.util.List&lt;org.mql.java.example.classes.Wheel&gt;" visibility="-"/>
+                        <field name="energeyType" type="org.mql.java.example.enums.EnergeyType" visibility="-"/>
+                    </fields>
+                    <methods>
+                        <method name="toString" returnType="java.lang.String" visibility="+"/>
+                        <method name="inCaseOfAccidentDriveBike" returnType="void" visibility="+">
+                            <parameters>
+                                <parameter type="org.mql.java.example.classes.Bike"/>
+                            </parameters>
+                        </method>
+                        <method name="makeSound" returnType="void" visibility="+"/>
+                        <method name="getWheels" returnType="java.util.List&lt;org.mql.java.example.classes.Wheel&gt;" visibility="+"/>
+                        <method name="org.mql.java.example.classes.Car" returnType="" visibility="+">
+                            <parameters>
+                                <parameter type="org.mql.java.example.classes.Driver"/>
+                                <parameter type="org.mql.java.example.enums.EnergeyType"/>
+                                <parameter type="java.util.List&lt;org.mql.java.example.classes.Wheel&gt;"/>
+                            </parameters>
+                        </method>
+                    </methods>
+                </class>
+                <class name="org.mql.java.example.classes.Driver">
+                    <fields>
+                        <field name="name" type="java.lang.String" visibility="-"/>
+                        <field name="primaryVehicle" type="org.mql.java.example.classes.Vehicle" visibility="-"/>
+                        <field name="secondaryVehicle" type="org.mql.java.example.classes.Vehicle" visibility="-"/>
+                    </fields>
+                    <methods>
+                        <method name="toString" returnType="java.lang.String" visibility="+"/>
+                        <method name="org.mql.java.example.classes.Driver" returnType="" visibility="+">
+                            <parameters>
+                                <parameter type="java.lang.String"/>
+                                <parameter type="org.mql.java.example.classes.Vehicle"/>
+                                <parameter type="org.mql.java.example.classes.Vehicle"/>
+                            </parameters>
+                        </method>
+                    </methods>
+                </class>
+                <class name="org.mql.java.example.classes.Vehicle">
+                    <methods>
+                        <method name="org.mql.java.example.classes.Vehicle" returnType="" visibility="+"/>
+                    </methods>
+                </class>
+                <class name="org.mql.java.example.classes.Wheel">
+                    <methods>
+                        <method name="org.mql.java.example.classes.Wheel" returnType="" visibility="+"/>
+                    </methods>
+                </class>
+            </classes>
+        </package>
+        <package name="org.mql.java.example.enums">
+            <classes>
+                <enumeration name="org.mql.java.example.enums.EnergeyType">
+                    <constants>
+                        <constant value="GASOLINE"/>
+                        <constant value="DIESEL"/>
+                        <constant value="ELECTRIC"/>
+                        <constant value="LEGS"/>
+                    </constants>
+                </enumeration>
+            </classes>
+        </package>
+        <package name="org.mql.java.example.interfaces">
+            <classes>
+                <interface name="org.mql.java.example.interfaces.Sound">
+                    <methods>
+                        <method name="makeSound" returnType="void" visibility="+"/>
+                    </methods>
+                </interface>
+            </classes>
+        </package>
+    </packages>
+    <relations>
+        <relation child="org.mql.java.example.classes.Bike..FuelBike" parent="org.mql.java.example.classes.Bike" type="COMPOSITION"/>
+        <relation child="org.mql.java.example.classes.Bike" parent="org.mql.java.example.classes.Bike..FuelBike" type="COMPOSITION"/>
+        <relation child="org.mql.java.example.classes.Bike" parent="org.mql.java.example.classes.Car" type="DEPENDENCY"/>
+        <relation child="org.mql.java.example.classes.Bike" parent="org.mql.java.example.classes.Vehicle" type="GENERALIZATION"/>
+        <relation child="org.mql.java.example.classes.Bike" parent="org.mql.java.example.interfaces.Sound" type="REALISATION"/>
+        <relation child="org.mql.java.example.classes.Car" parent="org.mql.java.example.classes.Bike" type="DEPENDENCY"/>
+        <relation child="org.mql.java.example.classes.Car" parent="org.mql.java.example.classes.Vehicle" type="GENERALIZATION"/>
+        <relation child="org.mql.java.example.classes.Car" parent="org.mql.java.example.interfaces.Sound" type="REALISATION"/>
+        <relation child="org.mql.java.example.classes.Driver" parent="org.mql.java.example.classes.Bike" type="AGGREGATION"/>
+        <relation child="org.mql.java.example.classes.Driver" parent="org.mql.java.example.classes.Car" type="AGGREGATION"/>
+        <relation child="org.mql.java.example.classes.Vehicle" parent="org.mql.java.example.classes.Driver" type="AGGREGATION"/>
+        <relation child="org.mql.java.example.classes.Wheel" parent="org.mql.java.example.classes.Bike" type="COMPOSITION"/>
+        <relation child="org.mql.java.example.classes.Wheel" parent="org.mql.java.example.classes.Car" type="COMPOSITION"/>
+        <relation child="org.mql.java.example.enums.EnergeyType" parent="org.mql.java.example.classes.Bike" type="ASSOCIATION"/>
+        <relation child="org.mql.java.example.enums.EnergeyType" parent="org.mql.java.example.classes.Car" type="COMPOSITION"/>
+    </relations>
+</project>

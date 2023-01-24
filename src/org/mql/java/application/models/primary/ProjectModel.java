@@ -11,6 +11,10 @@ public class ProjectModel implements Model {
 	private static ProjectModel project;
 	private String path;
 	
+	public void setPath(String path) {
+		this.path = path;
+	}
+
 	private List<PackageModel> packages;
 	private List<RelationModel> classRelations;
 	
@@ -29,6 +33,10 @@ public class ProjectModel implements Model {
 		return StringUtils.toProjectName(path);
 	}
 
+	public void setName(String path) {
+		this.path = path;
+	}
+	
 	public String getPath() {
 		return path;
 	}

@@ -6,21 +6,29 @@ import java.lang.reflect.Parameter;
 import java.lang.reflect.Type;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.mql.java.application.models.Model;
 import org.mql.java.application.utils.ModifierUtils;
 
 public class MethodModel implements Model {
 
-	private final String name;
+	private String name;
 
-	private final List<Parameter> parameters;
-	private final List<Type> parameterTypes;
-	private final int modifier;
-	private final String modifierString;
-	private final boolean isConstructor;
-	private final Type returnType;
+	private String modifierString;
+	private String typeName;
 
+	private List<String> parameterTypeNames;
+	private List<Parameter> parameters;
+	private List<Type> parameterTypes;
+	private int modifier;
+	private boolean isConstructor;
+	private Type returnType;
+
+	public MethodModel(String name) {
+		this.name = name;
+	}
+	
 	public MethodModel(Method method) {
 		this.name = method.getName();
 		this.parameters = Arrays.asList(method.getParameters());
@@ -29,6 +37,8 @@ public class MethodModel implements Model {
 		this.modifierString = ModifierUtils.resolveModifier(modifier);
 		this.isConstructor = false;
 		this.returnType = method.getGenericReturnType();
+		this.typeName = returnType.getTypeName();
+		this.parameterTypeNames = parameterTypes.stream().map(type -> type.getTypeName()).collect(Collectors.toList());
 	}
 
 	public MethodModel(Constructor<?> constructor) {
@@ -45,6 +55,29 @@ public class MethodModel implements Model {
 		return name;
 	}
 
+	public String getTypeName() {
+		return typeName;
+	}
+	
+	public void setTypeName(String typeName) {
+		this.typeName = typeName;
+	}
+	
+	public List<String> getParameterTypeNames() {
+		return parameterTypeNames;
+	}
+	
+	public void setParameterTypeNames(List<String> parameterTypeNames) {
+		this.parameterTypeNames = parameterTypeNames;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public void setModifierString(String modifierString) {
+		this.modifierString = modifierString;
+	}
 	public String getModifierString() {
 		return modifierString;
 	}

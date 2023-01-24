@@ -31,7 +31,7 @@ public class ClassParser implements Parser {
 
 	public Object parse(File file) {
 		this.targetClass = ClassLoader.loadClass(file);
-		this.name = targetClass.getName();
+		this.name = targetClass.getName().replace("$", "..");
 		if (targetClass != null) {
 			if (targetClass.isEnum()) {
 				EnumModel enumModel = new EnumModel(name);

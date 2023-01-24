@@ -6,19 +6,28 @@ import org.mql.java.application.types.RelationType;
 
 public class RelationModel implements Model {
 
-	private final RelationType relationType;
+	private RelationType relationType;
+	private String name;
 
 	private ClassModel relationParent;
 	private ClassModel relationChild;
-	
+
+	private String relationParentName;
+	private String relationChildName;
+
 	private FieldModel relationField;
+
+	public RelationModel(String name) {
+		this.name = name;
+	}
 
 	public RelationModel(RelationType realtionType) {
 		this.relationType = realtionType;
+		this.name = relationType.name();
 	}
 
 	public String getName() {
-		return relationType.name();
+		return this.name;
 	}
 
 	public RelationType getRelationType() {
@@ -44,8 +53,25 @@ public class RelationModel implements Model {
 	public FieldModel getRelationField() {
 		return relationField;
 	}
-	
+
 	public void setRelationField(FieldModel relationField) {
 		this.relationField = relationField;
 	}
+
+	public String getRelationParentName() {
+		return relationParentName;
+	}
+
+	public void setRelationParentName(String relationParentName) {
+		this.relationParentName = relationParentName;
+	}
+
+	public String getRelationChildName() {
+		return relationChildName;
+	}
+
+	public void setRelationChildName(String relationChildName) {
+		this.relationChildName = relationChildName;
+	}
+
 }

@@ -1,0 +1,109 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:simpleType name="relationType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="DEPENDENCY" />
+            <xs:enumeration value="ASSOCIATION" />
+            <xs:enumeration value="AGGREGATION" />
+            <xs:enumeration value="COMPOSITION" />
+            <xs:enumeration value="REALISATION" />
+            <xs:enumeration value="GENERALIZATION" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="visibility">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="+" />
+            <xs:enumeration value="-" />
+            <xs:enumeration value="~" />
+            <xs:enumeration value="#" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="project">
+        <xs:sequence>
+            <xs:element name="packages" type="packages" />
+            <xs:element name="relations" type="relations" />
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:string" />
+    </xs:complexType>
+    <xs:complexType name="packages">
+        <xs:sequence>
+            <xs:element name="package" type="package" minOccurs="0" maxOccurs="unbounded" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="package">
+        <xs:sequence>
+            <xs:element name="classes" type="classes" minOccurs="0" />
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:ID" />
+    </xs:complexType>
+    <xs:complexType name="classes">
+        <xs:choice maxOccurs="unbounded">
+            <xs:element name="class" type="modelType" minOccurs="0" maxOccurs="unbounded" />
+            <xs:element name="interface" type="modelType" minOccurs="0" maxOccurs="unbounded" />
+            <xs:element name="enumeration" type="enumeration" minOccurs="0" maxOccurs="unbounded" />
+        </xs:choice>
+    </xs:complexType>
+    <xs:complexType name="modelType">
+        <xs:sequence>
+            <xs:element name="fields" type="fields" minOccurs="0" />
+            <xs:element name="methods" type="methods" minOccurs="0" />
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:ID" />
+    </xs:complexType>
+    <xs:complexType name="enumeration">
+        <xs:sequence>
+            <xs:element name="constants" type="constants" minOccurs="0" />
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:ID" />
+    </xs:complexType>
+    <xs:complexType name="fields">
+        <xs:sequence>
+            <xs:element name="field" type="field" minOccurs="0" maxOccurs="unbounded" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="field">
+        <xs:attribute name="name" type="xs:string" />
+        <xs:attribute name="type" type="xs:string" />
+        <xs:attribute name="visibility" type="visibility" />
+    </xs:complexType>
+
+    <xs:complexType name="methods">
+        <xs:sequence>
+            <xs:element name="method" type="method" minOccurs="0" maxOccurs="unbounded" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="method">
+        <xs:sequence>
+            <xs:element name="parameters" type="parameters" minOccurs="0" />
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:string" />
+        <xs:attribute name="returnType" type="xs:string" />
+        <xs:attribute name="visibility" type="visibility" />
+    </xs:complexType>
+    <xs:complexType name="parameters">
+        <xs:sequence>
+            <xs:element name="parameter" type="parameter" minOccurs="0" maxOccurs="unbounded" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="parameter">
+        <xs:attribute name="type" type="xs:string" />
+    </xs:complexType>
+    <xs:complexType name="constants">
+        <xs:sequence>
+            <xs:element name="constant" type="constant" minOccurs="0" maxOccurs="unbounded" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="constant">
+        <xs:attribute name="value" type="xs:string" />
+    </xs:complexType>
+    <xs:complexType name="relations">
+        <xs:sequence>
+            <xs:element name="relation" type="relation" minOccurs="0" maxOccurs="unbounded" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="relation">
+        <xs:attribute name="parent" type="xs:IDREF" />
+        <xs:attribute name="child" type="xs:IDREF" />
+        <xs:attribute name="type" type="relationType" />
+    </xs:complexType>
+    <xs:element name="project" type="project"></xs:element>
+</xs:schema>

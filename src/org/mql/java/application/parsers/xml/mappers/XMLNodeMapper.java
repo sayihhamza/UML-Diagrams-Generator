@@ -1,7 +1,11 @@
 package org.mql.java.application.parsers.xml.mappers;
 
+import java.io.File;
 import java.lang.reflect.Type;
+import java.util.List;
+import java.util.Vector;
 
+import org.mql.java.application.models.Model;
 import org.mql.java.application.models.primary.ClassModel;
 import org.mql.java.application.models.primary.EnumModel;
 import org.mql.java.application.models.primary.InterfaceModel;
@@ -12,7 +16,9 @@ import org.mql.java.application.models.secondary.ConstantModel;
 import org.mql.java.application.models.secondary.FieldModel;
 import org.mql.java.application.models.secondary.MethodModel;
 import org.mql.java.application.parsers.xml.XMLNode;
+import org.mql.java.application.utils.StringUtils;
 
+@SuppressWarnings("unused")
 public class XMLNodeMapper implements Mapper {
 
 	@Override
@@ -22,6 +28,8 @@ public class XMLNodeMapper implements Mapper {
 			if (obj instanceof ProjectModel) {
 				ProjectModel actualObj = (ProjectModel) obj;
 				node = new XMLNode("project", 1);
+				node.setAttribute("xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance");
+				node.setAttribute("xsi:noNamespaceSchemaLocation", "projectModel.xsd");
 				node.setAttribute("name", actualObj.getName());
 
 				if (actualObj.getPackages().size() > 0) {
@@ -51,7 +59,7 @@ public class XMLNodeMapper implements Mapper {
 			} else if (obj instanceof PackageModel) {
 				PackageModel actualObj = (PackageModel) obj;
 				node = new XMLNode("package", 1);
-				node.setAttribute("name", actualObj.getName());
+				node.setAttribute("name", StringUtils.toPackageName(actualObj.getName()));
 				XMLNode classesNode = new XMLNode("classes", 1);
 				XMLNode classNode;
 				for (ClassModel aClass : actualObj.getClasses()) {
@@ -114,10 +122,10 @@ public class XMLNodeMapper implements Mapper {
 							}
 
 							if (aMethod.getParameterTypes().size() > 0) {
-								XMLNode parameterTypes = new XMLNode("parameterTypes", 1);
+								XMLNode parameterTypes = new XMLNode("parameters", 1);
 								XMLNode parameterType;
 								for (Type aType : aMethod.getParameterTypes()) {
-									parameterType = new XMLNode("parameterType", 1);
+									parameterType = new XMLNode("parameter", 1);
 									parameterType.setAttribute("type", aType.getTypeName());
 									parameterTypes.appendChild(parameterType);
 								}
@@ -134,5 +142,81 @@ public class XMLNodeMapper implements Mapper {
 			}
 		}
 		return node;
+	}
+
+	public Object xmlNodeToObject(XMLNode projectNode) {
+		ProjectModel projectModel = ProjectModel.getInstance(
+				new File("C:\\Users\\esayi\\eclipse-workspace\\UML Diagrams Generator\\resources\\projectModel.xml"));
+		projectModel.setName(projectNode.getAttributeValue("name"));
+
+		List<PackageModel> packgesModel = new Vector<>();
+		for (XMLNode packageNode : projectNode.child("packages").children()) {
+			PackageModel packageModel = new PackageModel(packageNode.getAttributeValue("name"));
+
+			List<ClassModel> classesModel = new Vector<>();
+			for (XMLNode classNode : packageNode.children()) {
+				if (classNode.getName().equals("enumeration")) {
+					EnumModel enumModel = new EnumModel(classNode.getAttributeValue("name"));
+					List<ConstantModel> constantsModel = new Vector<>();
+					for (XMLNode constant : classNode.child("constants").children()) {
+						ConstantModel constantModel = new ConstantModel(constant.getAttributeValue("value"));
+						constantsModel.add(constantModel);
+					}
+					enumModel.setConstants(constantsModel);
+					classesModel.add(enumModel);
+				}
+
+				else {
+					Model classModel = null;
+					if (classNode.getName().equals("interface")) {
+						classModel = new InterfaceModel(classNode.getAttributeValue("name"));
+					} else if (classNode.getName().equals("class")) {
+						classModel = new ClassModel(classNode.getAttributeValue("name"));
+					}
+
+					if (classNode.child("fields") != null) {
+						List<FieldModel> fieldsModel = new Vector<>();
+						for (XMLNode fieldNode : classNode.child("fields").children()) {
+							FieldModel fieldModel = new FieldModel(fieldNode.getAttributeValue("name"));
+							fieldModel.setModifierString(fieldNode.getAttributeValue("visibility"));
+							fieldModel.setTypeName(fieldNode.getAttributeValue("type"));
+							fieldsModel.add(fieldModel);
+						}
+						((ClassModel) classModel).setFields(fieldsModel);
+					}
+
+					if (classNode.child("methods") != null) {
+						List<MethodModel> methodsModel = new Vector<>();
+						for (XMLNode methodNode : classNode.child("methods").children()) {
+							MethodModel methodModel = new MethodModel(methodNode.getAttributeValue("name"));
+							methodModel.setModifierString(methodNode.getAttributeValue("visibility"));
+							methodModel.setTypeName(methodNode.getAttributeValue("returnType"));
+							List<String> parameterTypeNames = new Vector<>();
+							for (XMLNode parameterType : methodNode.child("parameters").children()) {
+								parameterTypeNames.add(parameterType.getAttributeValue("type"));
+							}
+							methodModel.setParameterTypeNames(parameterTypeNames);
+							methodsModel.add(methodModel);
+						}
+						((ClassModel) classModel).setMethods(methodsModel);
+					}
+					classesModel.add((ClassModel) classModel);
+				}
+			}
+			packageModel.setClasses(classesModel);
+			packgesModel.add(packageModel);
+		}
+		projectModel.setPackages(packgesModel);
+
+		List<RelationModel> relationsModel = new Vector<>();
+		for (XMLNode relationNode : projectNode.child("relations").children()) {
+			RelationModel relationModel = new RelationModel(relationNode.getAttributeValue("type"));
+			relationModel.setRelationChildName(relationNode.getAttributeValue("child"));
+			relationModel.setRelationParentName(relationNode.getAttributeValue("parent"));
+			relationsModel.add(relationModel);
+		}
+		projectModel.setClassRelations(relationsModel);
+
+		return projectModel;
 	}
 }

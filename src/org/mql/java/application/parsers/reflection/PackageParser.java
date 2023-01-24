@@ -18,8 +18,7 @@ public class PackageParser implements Parser {
 
 	public Object parse(File file) {
 		if (FileUtils.isPackageDirectory(file)) {
-			PackageModel packageModel = new PackageModel();
-			packageModel.setName(file.getAbsolutePath());
+			PackageModel packageModel = new PackageModel(file.getAbsolutePath());
 			List<ClassModel> classModels = new Vector<>();
 			for (File classFile : file.listFiles()) {
 				if (FileUtils.isClassFile(classFile)) {
