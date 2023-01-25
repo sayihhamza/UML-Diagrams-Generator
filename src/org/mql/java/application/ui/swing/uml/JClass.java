@@ -24,9 +24,9 @@ public class JClass extends BoxPanel implements Draggable {
 
 	private ClassModel classModel;
 
-	private TitlePanel titlePanel;
-	private SectionPanel attributesPanel;
-	private SectionPanel operationsPanel;
+	private TitlePanel namePanel;
+	private SectionPanel fieldsPanel;
+	private SectionPanel methodsPanel;
 
 	private int eX, eY;
 
@@ -102,39 +102,39 @@ public class JClass extends BoxPanel implements Draggable {
 	}
 
 	private void drawTitlePanel() {
-		titlePanel = new TitlePanel();
-		add(titlePanel);
+		namePanel = new TitlePanel();
+		add(namePanel);
 	}
 
 	private void drawAttributesPanel() {
-		attributesPanel = new SectionPanel();
+		fieldsPanel = new SectionPanel();
 
 		for (FieldModel umlMember : classModel.getFields()) {
 			if (!umlMember.getName().contains("$"))
-				attributesPanel.add(new JField(umlMember));
+				fieldsPanel.add(new JField(umlMember));
 		}
 
-		add(attributesPanel);
+		add(fieldsPanel);
 	}
 
 	private void drawOperationsPanel() {
-		operationsPanel = new SectionPanel();
+		methodsPanel = new SectionPanel();
 
 		for (MethodModel umlMember : classModel.getMethods()) {
-			operationsPanel.add(new JMethod(umlMember));
+			methodsPanel.add(new JMethod(umlMember));
 		}
 
-		add(operationsPanel);
+		add(methodsPanel);
 	}
 
 	private void drawConstantsPanel() {
-		attributesPanel = new SectionPanel();
+		fieldsPanel = new SectionPanel();
 
 		for (ConstantModel umlMember : ((EnumModel) classModel).getConstants()) {
-			attributesPanel.add(new JConstant(umlMember));
+			fieldsPanel.add(new JConstant(umlMember));
 		}
 
-		add(attributesPanel);
+		add(fieldsPanel);
 	}
 
 	private class TitlePanel extends BoxPanel {
@@ -166,7 +166,7 @@ public class JClass extends BoxPanel implements Draggable {
 		}
 	}
 
-	public ClassModel getClassifier() {
+	public ClassModel getClassModel() {
 		return classModel;
 	}
 

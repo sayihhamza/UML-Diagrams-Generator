@@ -11,16 +11,16 @@ import org.mql.java.application.utils.StringUtils;
 public class JField extends JPanel{
 	private static final long serialVersionUID = 1L;
 
-	protected FieldModel umlCharacteristic;
+	protected FieldModel fieldModel;
 
 	protected Label signatureLabel;
 	public JField(FieldModel fieldModel) {
-		this.umlCharacteristic = fieldModel;
+		this.fieldModel = fieldModel;
 		setOpaque(false);
 		setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
 
 		signatureLabel = new Label();
-		FieldModel property = umlCharacteristic;
+		FieldModel property = fieldModel;
 		
 		signatureLabel.addText(property.getModifierString());
 		signatureLabel.addText(StringUtils.toSimpleName(property.getName()));

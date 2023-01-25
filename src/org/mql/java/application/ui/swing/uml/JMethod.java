@@ -12,17 +12,17 @@ public class JMethod extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
-	protected MethodModel umlCharacteristic;
+	protected MethodModel methodModel;
 
 	protected Label signatureLabel;
 
 	public JMethod(MethodModel methodModel) {
-		this.umlCharacteristic = methodModel;
+		this.methodModel = methodModel;
 		setOpaque(false);
 		setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
 
 		signatureLabel = new Label();
-		MethodModel operation = umlCharacteristic;
+		MethodModel operation = methodModel;
 		signatureLabel.addText((operation).getModifierString());
 		signatureLabel.addText(StringUtils.toSimpleName(operation.getName()));
 		signatureLabel.addText("(");

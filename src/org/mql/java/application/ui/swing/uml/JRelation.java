@@ -12,13 +12,13 @@ import org.mql.java.application.models.primary.RelationModel;
 public class JRelation extends JPanel implements Draggable {
 	private static final long serialVersionUID = 1L;
 	
-	private RelationModel umlRelation;
+	private RelationModel relationModel;
 	private JProject jProject;
 	
 	private Point p1, p2;
 	
 	public JRelation(RelationModel umlRelation, JProject jProject) {
-		this.umlRelation = umlRelation;
+		this.relationModel = umlRelation;
 		this.jProject = jProject;
 		
 		// setOpaque(false);
@@ -28,8 +28,8 @@ public class JRelation extends JPanel implements Draggable {
 	}
 	
 	private void drawRelation() {
-		JClass childJumlClassifier = jProject.getJumlClassifier(umlRelation.getRelationChild());
-		JClass parentJumlClassifier = jProject.getJumlClassifier(umlRelation.getRelationParent());
+		JClass childJumlClassifier = jProject.getJumlClassifier(relationModel.getRelationChild());
+		JClass parentJumlClassifier = jProject.getJumlClassifier(relationModel.getRelationParent());
 				
 		p1 = new Point(childJumlClassifier.getX(), childJumlClassifier.getY());
 		p2 = new Point(parentJumlClassifier.getX(), parentJumlClassifier.getY());

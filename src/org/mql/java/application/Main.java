@@ -57,8 +57,11 @@ public class Main extends JFrame {
 		try {
 			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
 
-			File file = new File(
-					"C:\\Users\\esayi\\eclipse-workspace\\UML Diagrams Generator\\bin\\org\\mql\\java\\example");
+			File file = new File("C:\\Users\\esayi\\eclipse-workspace\\UML Diagrams Generator\\bin");
+			
+//			File file = new File(
+//					"C:\\Users\\esayi\\eclipse-workspace\\UML Diagrams Generator\\bin\\org\\mql\\java\\example");
+			
 			if (FileUtils.isProjectDirectory(file)) {
 				Main main = new Main();
 				main.startProcessing(file);

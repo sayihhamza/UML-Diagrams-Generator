@@ -15,19 +15,19 @@ public class JProject extends JPanel {
 	private static final long serialVersionUID = 1L;
 
 	private ProjectModel projectModel;
-	private List<JPackage> jumlPackages;
-	private List<JRelation> jumlRelations;
+	private List<JPackage> jPackages;
+	private List<JRelation> jRelations;
 
 	public JProject(ProjectModel projectModel) {
 		this.projectModel = projectModel;
-		jumlPackages = new Vector<>();
-		jumlRelations = new Vector<>();
+		jPackages = new Vector<>();
+		jRelations = new Vector<>();
 		drawPackages();
 //		drawRelations();
 	}
 
 	public JClass getJumlClassifier(Model umlClassifier) {
-		for (JPackage jumlPackage : jumlPackages) {
+		for (JPackage jumlPackage : jPackages) {
 			for (JClass jumlClassifier : jumlPackage.getJumlClassifiers()) {
 				if (jumlClassifier.getName() == umlClassifier.getName()) {
 					return jumlClassifier;
@@ -46,7 +46,7 @@ public class JProject extends JPanel {
 			jumlPackage.setLocation(x, y);
 			add(jumlPackage);
 
-			jumlPackages.add(jumlPackage);
+			jPackages.add(jumlPackage);
 		}
 	}
 

@@ -23,18 +23,18 @@ import org.mql.java.application.utils.StringUtils;
 public class JPackage extends BoxPanel implements Draggable {
 	private static final long serialVersionUID = 1L;
 
-	private PackageModel umlPackage;
-	private List<JClass> jumlClassifiers;
+	private PackageModel packageModel;
+	private List<JClass> jClasses;
 
-	private JPanel titlePanel;
-	private JPanel classifiersPanel;
+	private JPanel namePanel;
+	private JPanel classesPanel;
 
 	public JPanel getClassifiersPanel() {
-		return classifiersPanel;
+		return classesPanel;
 	}
 
 	public void setClassifiersPanel(JPanel classifiersPanel) {
-		this.classifiersPanel = classifiersPanel;
+		this.classesPanel = classifiersPanel;
 	}
 
 	private int eX, eY;
@@ -82,8 +82,8 @@ public class JPackage extends BoxPanel implements Draggable {
 	}
 
 	public JPackage(PackageModel umlPackage) {
-		this.umlPackage = umlPackage;
-		jumlClassifiers = new Vector<>();
+		this.packageModel = umlPackage;
+		jClasses = new Vector<>();
 
 		setOpaque(false);
 		drawClassifiers(15);
@@ -96,28 +96,28 @@ public class JPackage extends BoxPanel implements Draggable {
 	}
 
 	private void drawClassifiers(int padding) {
-		classifiersPanel = new JPanel(null);
+		classesPanel = new JPanel(null);
 
-		classifiersPanel.setLayout(new WrapLayout(FlowLayout.LEFT, padding, padding));
-		classifiersPanel.setBorder(new LineBorder(Color.black, 1));
-		classifiersPanel.setBackground(Color.white);
+		classesPanel.setLayout(new WrapLayout(FlowLayout.LEFT, padding, padding));
+		classesPanel.setBorder(new LineBorder(Color.black, 1));
+		classesPanel.setBackground(Color.white);
 
-		for (ClassModel classifier : umlPackage.getClasses()) {
+		for (ClassModel classifier : packageModel.getClasses()) {
 			JClass jumlClassifier = new JClass(classifier);
 //			jumlClassifier.setLocation(10, 10);
-			classifiersPanel.add(jumlClassifier);
+			classesPanel.add(jumlClassifier);
 
-			jumlClassifiers.add(jumlClassifier);
+			jClasses.add(jumlClassifier);
 		}
 
-		classifiersPanel.setSize(600, 200);
+		classesPanel.setSize(600, 200);
 	}
 
 	private void drawTitle(int padding) {
-		titlePanel = new JPanel();
-		titlePanel.setOpaque(false);
-		titlePanel.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
-		Label titleLabel = new Label(StringUtils.toPackageName(umlPackage.getName()));
+		namePanel = new JPanel();
+		namePanel.setOpaque(false);
+		namePanel.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
+		Label titleLabel = new Label(StringUtils.toPackageName(packageModel.getName()));
 
 		JPanel p = new JPanel();
 		p.setLayout(new FlowLayout(FlowLayout.CENTER, getClassifiersPanel().getPreferredSize().width / 2, padding));
@@ -125,14 +125,14 @@ public class JPackage extends BoxPanel implements Draggable {
 		p.setBackground(Color.white);
 		p.add(titleLabel);
 
-		titlePanel.add(p);
+		namePanel.add(p);
 
-		add(titlePanel);
-		add(classifiersPanel);
+		add(namePanel);
+		add(classesPanel);
 	}
 
 	public List<JClass> getJumlClassifiers() {
-		return jumlClassifiers;
+		return jClasses;
 	}
 
 	@Override
