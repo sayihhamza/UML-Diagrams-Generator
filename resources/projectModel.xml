@@ -13,19 +13,19 @@
                                 <parameter type="java.lang.String[]"/>
                             </parameters>
                         </method>
-                        <method name="generateXMLTree" returnType="void" visibility="-"/>
+                        <method name="drawProject" returnType="void" visibility="-"/>
                         <method name="config" returnType="void" visibility="-"/>
                         <method name="parseProject" returnType="void" visibility="-">
                             <parameters>
                                 <parameter type="java.io.File"/>
                             </parameters>
                         </method>
+                        <method name="generateXMLTree" returnType="void" visibility="-"/>
                         <method name="startProcessing" returnType="void" visibility="-">
                             <parameters>
                                 <parameter type="java.io.File"/>
                             </parameters>
                         </method>
-                        <method name="drawProject" returnType="void" visibility="-"/>
                         <method name="org.mql.java.application.Main" returnType="" visibility="+"/>
                     </methods>
                 </class>
@@ -67,14 +67,14 @@
                                 <parameter type="java.util.List&lt;org.mql.java.application.models.primary.ClassModel&gt;"/>
                             </parameters>
                         </method>
-                        <method name="setMethods" returnType="void" visibility="+">
-                            <parameters>
-                                <parameter type="java.util.List&lt;org.mql.java.application.models.secondary.MethodModel&gt;"/>
-                            </parameters>
-                        </method>
                         <method name="setParentClass" returnType="void" visibility="+">
                             <parameters>
                                 <parameter type="org.mql.java.application.models.primary.ClassModel"/>
+                            </parameters>
+                        </method>
+                        <method name="setMethods" returnType="void" visibility="+">
+                            <parameters>
+                                <parameter type="java.util.List&lt;org.mql.java.application.models.secondary.MethodModel&gt;"/>
                             </parameters>
                         </method>
                         <method name="getParentClass" returnType="org.mql.java.application.models.primary.ClassModel" visibility="+"/>
@@ -160,14 +160,14 @@
                             </parameters>
                         </method>
                         <method name="getPath" returnType="java.lang.String" visibility="+"/>
-                        <method name="setPackages" returnType="void" visibility="+">
-                            <parameters>
-                                <parameter type="java.util.List&lt;org.mql.java.application.models.primary.PackageModel&gt;"/>
-                            </parameters>
-                        </method>
                         <method name="setClassRelations" returnType="void" visibility="+">
                             <parameters>
                                 <parameter type="java.util.List&lt;org.mql.java.application.models.primary.RelationModel&gt;"/>
+                            </parameters>
+                        </method>
+                        <method name="setPackages" returnType="void" visibility="+">
+                            <parameters>
+                                <parameter type="java.util.List&lt;org.mql.java.application.models.primary.PackageModel&gt;"/>
                             </parameters>
                         </method>
                         <method name="setPath" returnType="void" visibility="+">
@@ -196,6 +196,7 @@
                     <methods>
                         <method name="getName" returnType="java.lang.Object" visibility="+"/>
                         <method name="getName" returnType="java.lang.String" visibility="+"/>
+                        <method name="getRelationParentName" returnType="java.lang.String" visibility="+"/>
                         <method name="setRelationParentName" returnType="void" visibility="+">
                             <parameters>
                                 <parameter type="java.lang.String"/>
@@ -207,26 +208,25 @@
                             </parameters>
                         </method>
                         <method name="getRelationChildName" returnType="java.lang.String" visibility="+"/>
-                        <method name="getRelationParentName" returnType="java.lang.String" visibility="+"/>
-                        <method name="setRelationChild" returnType="void" visibility="+">
-                            <parameters>
-                                <parameter type="org.mql.java.application.models.primary.ClassModel"/>
-                            </parameters>
-                        </method>
+                        <method name="getRelationType" returnType="org.mql.java.application.types.RelationType" visibility="+"/>
+                        <method name="getRelationParent" returnType="org.mql.java.application.models.primary.ClassModel" visibility="+"/>
+                        <method name="getRelationField" returnType="org.mql.java.application.models.secondary.FieldModel" visibility="+"/>
                         <method name="setRelationParent" returnType="void" visibility="+">
                             <parameters>
                                 <parameter type="org.mql.java.application.models.primary.ClassModel"/>
                             </parameters>
                         </method>
                         <method name="getRelationChild" returnType="org.mql.java.application.models.primary.ClassModel" visibility="+"/>
-                        <method name="getRelationParent" returnType="org.mql.java.application.models.primary.ClassModel" visibility="+"/>
                         <method name="setRelationField" returnType="void" visibility="+">
                             <parameters>
                                 <parameter type="org.mql.java.application.models.secondary.FieldModel"/>
                             </parameters>
                         </method>
-                        <method name="getRelationType" returnType="org.mql.java.application.types.RelationType" visibility="+"/>
-                        <method name="getRelationField" returnType="org.mql.java.application.models.secondary.FieldModel" visibility="+"/>
+                        <method name="setRelationChild" returnType="void" visibility="+">
+                            <parameters>
+                                <parameter type="org.mql.java.application.models.primary.ClassModel"/>
+                            </parameters>
+                        </method>
                         <method name="org.mql.java.application.models.primary.RelationModel" returnType="" visibility="+">
                             <parameters>
                                 <parameter type="java.lang.String"/>
@@ -277,18 +277,18 @@
                         </method>
                         <method name="getGenericType" returnType="java.lang.reflect.Type" visibility="+"/>
                         <method name="getType" returnType="java.lang.reflect.Type" visibility="+"/>
-                        <method name="getModifierString" returnType="java.lang.String" visibility="+"/>
+                        <method name="setTypeName" returnType="void" visibility="+">
+                            <parameters>
+                                <parameter type="java.lang.String"/>
+                            </parameters>
+                        </method>
                         <method name="setModifierString" returnType="void" visibility="+">
                             <parameters>
                                 <parameter type="java.lang.String"/>
                             </parameters>
                         </method>
                         <method name="getModifier" returnType="int" visibility="+"/>
-                        <method name="setTypeName" returnType="void" visibility="+">
-                            <parameters>
-                                <parameter type="java.lang.String"/>
-                            </parameters>
-                        </method>
+                        <method name="getModifierString" returnType="java.lang.String" visibility="+"/>
                         <method name="org.mql.java.application.models.secondary.FieldModel" returnType="" visibility="+">
                             <parameters>
                                 <parameter type="java.lang.String"/>
@@ -332,21 +332,21 @@
                             </parameters>
                         </method>
                         <method name="getParameterTypeNames" returnType="java.util.List&lt;java.lang.String&gt;" visibility="+"/>
-                        <method name="getModifierString" returnType="java.lang.String" visibility="+"/>
+                        <method name="setTypeName" returnType="void" visibility="+">
+                            <parameters>
+                                <parameter type="java.lang.String"/>
+                            </parameters>
+                        </method>
                         <method name="setModifierString" returnType="void" visibility="+">
                             <parameters>
                                 <parameter type="java.lang.String"/>
                             </parameters>
                         </method>
                         <method name="getModifier" returnType="int" visibility="+"/>
+                        <method name="getModifierString" returnType="java.lang.String" visibility="+"/>
                         <method name="lambda$0" returnType="java.lang.String" visibility="-">
                             <parameters>
                                 <parameter type="java.lang.reflect.Type"/>
-                            </parameters>
-                        </method>
-                        <method name="setTypeName" returnType="void" visibility="+">
-                            <parameters>
-                                <parameter type="java.lang.String"/>
                             </parameters>
                         </method>
                         <method name="org.mql.java.application.models.secondary.MethodModel" returnType="" visibility="+">
@@ -395,23 +395,17 @@
                                 <parameter type="java.io.File"/>
                             </parameters>
                         </method>
-                        <method name="getTargetClass" returnType="java.lang.Class&lt;?&gt;" visibility="+"/>
+                        <method name="parseFields" returnType="void" visibility="-">
+                            <parameters>
+                                <parameter type="org.mql.java.application.models.primary.ClassModel"/>
+                            </parameters>
+                        </method>
                         <method name="parseConstants" returnType="void" visibility="-">
                             <parameters>
                                 <parameter type="org.mql.java.application.models.primary.EnumModel"/>
                             </parameters>
                         </method>
-                        <method name="parseParentClass" returnType="void" visibility="-">
-                            <parameters>
-                                <parameter type="org.mql.java.application.models.primary.ClassModel"/>
-                            </parameters>
-                        </method>
-                        <method name="parseMethods" returnType="void" visibility="-">
-                            <parameters>
-                                <parameter type="org.mql.java.application.models.primary.ClassModel"/>
-                            </parameters>
-                        </method>
-                        <method name="parseFields" returnType="void" visibility="-">
+                        <method name="parseConstructors" returnType="void" visibility="-">
                             <parameters>
                                 <parameter type="org.mql.java.application.models.primary.ClassModel"/>
                             </parameters>
@@ -421,7 +415,13 @@
                                 <parameter type="org.mql.java.application.models.primary.ClassModel"/>
                             </parameters>
                         </method>
-                        <method name="parseConstructors" returnType="void" visibility="-">
+                        <method name="getTargetClass" returnType="java.lang.Class&lt;?&gt;" visibility="+"/>
+                        <method name="parseMethods" returnType="void" visibility="-">
+                            <parameters>
+                                <parameter type="org.mql.java.application.models.primary.ClassModel"/>
+                            </parameters>
+                        </method>
+                        <method name="parseParentClass" returnType="void" visibility="-">
                             <parameters>
                                 <parameter type="org.mql.java.application.models.primary.ClassModel"/>
                             </parameters>
@@ -473,17 +473,17 @@
                     <methods>
                         <method name="parse" returnType="org.mql.java.application.models.primary.RelationModel" visibility="+"/>
                         <method name="parseGeneralization" returnType="void" visibility="+"/>
+                        <method name="parseAggregation" returnType="void" visibility="+"/>
+                        <method name="parseDependency" returnType="void" visibility="+"/>
                         <method name="getRelationModel" returnType="org.mql.java.application.models.primary.RelationModel" visibility="+"/>
                         <method name="parseAssociation" returnType="void" visibility="+"/>
-                        <method name="parseDependency" returnType="void" visibility="+"/>
+                        <method name="parseCompostion" returnType="void" visibility="+"/>
+                        <method name="parseRealisation" returnType="void" visibility="+"/>
                         <method name="setRelationModel" returnType="void" visibility="+">
                             <parameters>
                                 <parameter type="org.mql.java.application.models.primary.RelationModel"/>
                             </parameters>
                         </method>
-                        <method name="parseAggregation" returnType="void" visibility="+"/>
-                        <method name="parseCompostion" returnType="void" visibility="+"/>
-                        <method name="parseRealisation" returnType="void" visibility="+"/>
                         <method name="org.mql.java.application.parsers.reflection.RelationParser" returnType="" visibility="+">
                             <parameters>
                                 <parameter type="org.mql.java.application.models.primary.ClassModel"/>
@@ -520,28 +520,28 @@
                         <method name="getName" returnType="java.lang.String" visibility="+"/>
                         <method name="getValue" returnType="java.lang.String" visibility="+"/>
                         <method name="getAttributes" returnType="org.mql.java.application.parsers.xml.XMLNode[]" visibility="+"/>
-                        <method name="generate" returnType="java.io.File" visibility="+"/>
-                        <method name="setAttribute" returnType="void" visibility="+">
+                        <method name="child" returnType="org.mql.java.application.parsers.xml.XMLNode" visibility="+">
                             <parameters>
                                 <parameter type="java.lang.String"/>
+                                <parameter type="java.lang.String"/>
+                                <parameter type="java.lang.String"/>
+                            </parameters>
+                        </method>
+                        <method name="child" returnType="org.mql.java.application.parsers.xml.XMLNode" visibility="+">
+                            <parameters>
+                                <parameter type="java.lang.String"/>
+                            </parameters>
+                        </method>
+                        <method name="generate" returnType="java.io.File" visibility="+"/>
+                        <method name="getAttribute" returnType="org.mql.java.application.parsers.xml.XMLNode" visibility="+">
+                            <parameters>
                                 <parameter type="java.lang.String"/>
                             </parameters>
                         </method>
                         <method name="children" returnType="org.mql.java.application.parsers.xml.XMLNode[]" visibility="+"/>
-                        <method name="child" returnType="org.mql.java.application.parsers.xml.XMLNode" visibility="+">
+                        <method name="setAttribute" returnType="void" visibility="+">
                             <parameters>
                                 <parameter type="java.lang.String"/>
-                            </parameters>
-                        </method>
-                        <method name="child" returnType="org.mql.java.application.parsers.xml.XMLNode" visibility="+">
-                            <parameters>
-                                <parameter type="java.lang.String"/>
-                                <parameter type="java.lang.String"/>
-                                <parameter type="java.lang.String"/>
-                            </parameters>
-                        </method>
-                        <method name="getAttribute" returnType="org.mql.java.application.parsers.xml.XMLNode" visibility="+">
-                            <parameters>
                                 <parameter type="java.lang.String"/>
                             </parameters>
                         </method>
@@ -553,23 +553,23 @@
                         </method>
                         <method name="isAttribute" returnType="boolean" visibility="+"/>
                         <method name="hasAttributes" returnType="boolean" visibility="+"/>
-                        <method name="isElement" returnType="boolean" visibility="+"/>
-                        <method name="getAttributeValue" returnType="java.lang.String" visibility="+">
-                            <parameters>
-                                <parameter type="java.lang.String"/>
-                            </parameters>
-                        </method>
                         <method name="appendChild" returnType="void" visibility="+">
                             <parameters>
                                 <parameter type="org.mql.java.application.parsers.xml.XMLNode"/>
                             </parameters>
                         </method>
-                        <method name="getDocument" returnType="org.w3c.dom.Document" visibility="+"/>
                         <method name="removeChild" returnType="void" visibility="+">
                             <parameters>
                                 <parameter type="org.mql.java.application.parsers.xml.XMLNode"/>
                             </parameters>
                         </method>
+                        <method name="getDocument" returnType="org.w3c.dom.Document" visibility="+"/>
+                        <method name="getAttributeValue" returnType="java.lang.String" visibility="+">
+                            <parameters>
+                                <parameter type="java.lang.String"/>
+                            </parameters>
+                        </method>
+                        <method name="isElement" returnType="boolean" visibility="+"/>
                         <method name="org.mql.java.application.parsers.xml.XMLNode" returnType="" visibility="-">
                             <parameters>
                                 <parameter type="org.w3c.dom.Node"/>
@@ -594,28 +594,28 @@
             <classes>
                 <interface name="org.mql.java.application.parsers.xml.mappers.Mapper">
                     <methods>
-                        <method name="xmlNodeToObject" returnType="java.lang.Object" visibility="+">
-                            <parameters>
-                                <parameter type="org.mql.java.application.parsers.xml.XMLNode"/>
-                            </parameters>
-                        </method>
                         <method name="objectToXMLNode" returnType="org.mql.java.application.parsers.xml.XMLNode" visibility="+">
                             <parameters>
                                 <parameter type="java.lang.Object"/>
+                            </parameters>
+                        </method>
+                        <method name="xmlNodeToObject" returnType="java.lang.Object" visibility="+">
+                            <parameters>
+                                <parameter type="org.mql.java.application.parsers.xml.XMLNode"/>
                             </parameters>
                         </method>
                     </methods>
                 </interface>
                 <class name="org.mql.java.application.parsers.xml.mappers.XMLNodeMapper">
                     <methods>
-                        <method name="xmlNodeToObject" returnType="java.lang.Object" visibility="+">
-                            <parameters>
-                                <parameter type="org.mql.java.application.parsers.xml.XMLNode"/>
-                            </parameters>
-                        </method>
                         <method name="objectToXMLNode" returnType="org.mql.java.application.parsers.xml.XMLNode" visibility="+">
                             <parameters>
                                 <parameter type="java.lang.Object"/>
+                            </parameters>
+                        </method>
+                        <method name="xmlNodeToObject" returnType="java.lang.Object" visibility="+">
+                            <parameters>
+                                <parameter type="org.mql.java.application.parsers.xml.XMLNode"/>
                             </parameters>
                         </method>
                         <method name="org.mql.java.application.parsers.xml.mappers.XMLNodeMapper" returnType="" visibility="+"/>
@@ -654,7 +654,7 @@
                                 <parameter type="int"/>
                             </parameters>
                         </method>
-                        <method name="setBorderLeft" returnType="void" visibility="+">
+                        <method name="setBorderBottom" returnType="void" visibility="+">
                             <parameters>
                                 <parameter type="int"/>
                             </parameters>
@@ -664,7 +664,7 @@
                                 <parameter type="int"/>
                             </parameters>
                         </method>
-                        <method name="setBorderBottom" returnType="void" visibility="+">
+                        <method name="setBorderLeft" returnType="void" visibility="+">
                             <parameters>
                                 <parameter type="int"/>
                             </parameters>
@@ -849,11 +849,11 @@
                                 <parameter type="java.awt.event.MouseEvent"/>
                             </parameters>
                         </method>
-                        <method name="drawOperationsPanel" returnType="void" visibility="-"/>
                         <method name="drawAttributesPanel" returnType="void" visibility="-"/>
-                        <method name="drawConstantsPanel" returnType="void" visibility="-"/>
-                        <method name="drawTitlePanel" returnType="void" visibility="-"/>
+                        <method name="drawOperationsPanel" returnType="void" visibility="-"/>
                         <method name="getClassifier" returnType="org.mql.java.application.models.primary.ClassModel" visibility="+"/>
+                        <method name="drawTitlePanel" returnType="void" visibility="-"/>
+                        <method name="drawConstantsPanel" returnType="void" visibility="-"/>
                         <method name="org.mql.java.application.ui.swing.uml.JClass" returnType="" visibility="+">
                             <parameters>
                                 <parameter type="org.mql.java.application.models.primary.ClassModel"/>
@@ -884,7 +884,7 @@
                 <class name="org.mql.java.application.ui.swing.uml.JField">
                     <fields>
                         <field name="serialVersionUID" type="long" visibility="-"/>
-                        <field name="umlCharacteristic" type="org.mql.java.application.models.secondary.FieldModel" visibility="#"/>
+                        <field name="fieldModel" type="org.mql.java.application.models.secondary.FieldModel" visibility="#"/>
                         <field name="signatureLabel" type="org.mql.java.application.ui.swing.Label" visibility="#"/>
                     </fields>
                     <methods>
@@ -898,7 +898,7 @@
                 <class name="org.mql.java.application.ui.swing.uml.JMethod">
                     <fields>
                         <field name="serialVersionUID" type="long" visibility="-"/>
-                        <field name="umlCharacteristic" type="org.mql.java.application.models.secondary.MethodModel" visibility="#"/>
+                        <field name="methodModel" type="org.mql.java.application.models.secondary.MethodModel" visibility="#"/>
                         <field name="signatureLabel" type="org.mql.java.application.ui.swing.Label" visibility="#"/>
                     </fields>
                     <methods>
@@ -967,10 +967,10 @@
                 <class name="org.mql.java.application.ui.swing.uml.JPackage">
                     <fields>
                         <field name="serialVersionUID" type="long" visibility="-"/>
-                        <field name="umlPackage" type="org.mql.java.application.models.primary.PackageModel" visibility="-"/>
-                        <field name="jumlClassifiers" type="java.util.List&lt;org.mql.java.application.ui.swing.uml.JClass&gt;" visibility="-"/>
-                        <field name="titlePanel" type="javax.swing.JPanel" visibility="-"/>
-                        <field name="classifiersPanel" type="javax.swing.JPanel" visibility="-"/>
+                        <field name="packageModel" type="org.mql.java.application.models.primary.PackageModel" visibility="-"/>
+                        <field name="jClasses" type="java.util.List&lt;org.mql.java.application.ui.swing.uml.JClass&gt;" visibility="-"/>
+                        <field name="namePanel" type="javax.swing.JPanel" visibility="-"/>
+                        <field name="classesPanel" type="javax.swing.JPanel" visibility="-"/>
                         <field name="eX" type="int" visibility="-"/>
                         <field name="eY" type="int" visibility="-"/>
                     </fields>
@@ -981,18 +981,18 @@
                             </parameters>
                         </method>
                         <method name="getJumlClassifiers" returnType="java.util.List&lt;org.mql.java.application.ui.swing.uml.JClass&gt;" visibility="+"/>
+                        <method name="getClassifiersPanel" returnType="javax.swing.JPanel" visibility="+"/>
                         <method name="setClassifiersPanel" returnType="void" visibility="+">
                             <parameters>
                                 <parameter type="javax.swing.JPanel"/>
                             </parameters>
                         </method>
-                        <method name="getClassifiersPanel" returnType="javax.swing.JPanel" visibility="+"/>
-                        <method name="drawTitle" returnType="void" visibility="-">
+                        <method name="drawClassifiers" returnType="void" visibility="-">
                             <parameters>
                                 <parameter type="int"/>
                             </parameters>
                         </method>
-                        <method name="drawClassifiers" returnType="void" visibility="-">
+                        <method name="drawTitle" returnType="void" visibility="-">
                             <parameters>
                                 <parameter type="int"/>
                             </parameters>
@@ -1008,16 +1008,16 @@
                     <fields>
                         <field name="serialVersionUID" type="long" visibility="-"/>
                         <field name="projectModel" type="org.mql.java.application.models.primary.ProjectModel" visibility="-"/>
-                        <field name="jumlPackages" type="java.util.List&lt;org.mql.java.application.ui.swing.uml.JPackage&gt;" visibility="-"/>
-                        <field name="jumlRelations" type="java.util.List&lt;org.mql.java.application.ui.swing.uml.JRelation&gt;" visibility="-"/>
+                        <field name="jPackages" type="java.util.List&lt;org.mql.java.application.ui.swing.uml.JPackage&gt;" visibility="-"/>
+                        <field name="jRelations" type="java.util.List&lt;org.mql.java.application.ui.swing.uml.JRelation&gt;" visibility="-"/>
                     </fields>
                     <methods>
-                        <method name="drawPackages" returnType="void" visibility="-"/>
                         <method name="getJumlClassifier" returnType="org.mql.java.application.ui.swing.uml.JClass" visibility="+">
                             <parameters>
                                 <parameter type="org.mql.java.application.models.Model"/>
                             </parameters>
                         </method>
+                        <method name="drawPackages" returnType="void" visibility="-"/>
                         <method name="org.mql.java.application.ui.swing.uml.JProject" returnType="" visibility="+">
                             <parameters>
                                 <parameter type="org.mql.java.application.models.primary.ProjectModel"/>
@@ -1028,7 +1028,7 @@
                 <class name="org.mql.java.application.ui.swing.uml.JRelation">
                     <fields>
                         <field name="serialVersionUID" type="long" visibility="-"/>
-                        <field name="umlRelation" type="org.mql.java.application.models.primary.RelationModel" visibility="-"/>
+                        <field name="relationModel" type="org.mql.java.application.models.primary.RelationModel" visibility="-"/>
                         <field name="jProject" type="org.mql.java.application.ui.swing.uml.JProject" visibility="-"/>
                         <field name="p1" type="java.awt.Point" visibility="-"/>
                         <field name="p2" type="java.awt.Point" visibility="-"/>
@@ -1080,6 +1080,11 @@
                                 <parameter type="java.io.File"/>
                             </parameters>
                         </method>
+                        <method name="isPackageDirectory" returnType="boolean" visibility="+">
+                            <parameters>
+                                <parameter type="java.io.File"/>
+                            </parameters>
+                        </method>
                         <method name="getAllPackages" returnType="void" visibility="+">
                             <parameters>
                                 <parameter type="java.io.File"/>
@@ -1087,11 +1092,6 @@
                             </parameters>
                         </method>
                         <method name="isClassFile" returnType="boolean" visibility="+">
-                            <parameters>
-                                <parameter type="java.io.File"/>
-                            </parameters>
-                        </method>
-                        <method name="isPackageDirectory" returnType="boolean" visibility="+">
                             <parameters>
                                 <parameter type="java.io.File"/>
                             </parameters>
@@ -1121,15 +1121,27 @@
                                 <parameter type="org.mql.java.application.models.secondary.FieldModel"/>
                             </parameters>
                         </method>
+                        <method name="isIterable" returnType="boolean" visibility="+">
+                            <parameters>
+                                <parameter type="java.lang.Class&lt;?&gt;"/>
+                            </parameters>
+                        </method>
+                        <method name="isInnerClassOf" returnType="boolean" visibility="+">
+                            <parameters>
+                                <parameter type="org.mql.java.application.models.primary.ClassModel"/>
+                                <parameter type="org.mql.java.application.models.primary.ClassModel"/>
+                            </parameters>
+                        </method>
                         <method name="genericTypeCastableToClass" returnType="java.lang.Class&lt;?&gt;" visibility="+">
                             <parameters>
                                 <parameter type="java.lang.reflect.Type"/>
                             </parameters>
                         </method>
-                        <method name="isClassInMethodParameterOf" returnType="boolean" visibility="+">
+                        <method name="isRelationCompositeOf" returnType="boolean" visibility="+">
                             <parameters>
                                 <parameter type="org.mql.java.application.models.primary.ClassModel"/>
-                                <parameter type="java.util.List&lt;org.mql.java.application.models.secondary.MethodModel&gt;"/>
+                                <parameter type="org.mql.java.application.models.primary.ClassModel"/>
+                                <parameter type="org.mql.java.application.models.primary.RelationModel"/>
                             </parameters>
                         </method>
                         <method name="checkIfClassTypeInFieldsOf" returnType="org.mql.java.application.models.secondary.FieldModel" visibility="+">
@@ -1138,11 +1150,10 @@
                                 <parameter type="java.util.List&lt;org.mql.java.application.models.secondary.FieldModel&gt;"/>
                             </parameters>
                         </method>
-                        <method name="isRelationCompositeOf" returnType="boolean" visibility="+">
+                        <method name="isClassInMethodParameterOf" returnType="boolean" visibility="+">
                             <parameters>
                                 <parameter type="org.mql.java.application.models.primary.ClassModel"/>
-                                <parameter type="org.mql.java.application.models.primary.ClassModel"/>
-                                <parameter type="org.mql.java.application.models.primary.RelationModel"/>
+                                <parameter type="java.util.List&lt;org.mql.java.application.models.secondary.MethodModel&gt;"/>
                             </parameters>
                         </method>
                         <method name="extractAllClasses" returnType="java.util.List&lt;org.mql.java.application.models.primary.ClassModel&gt;" visibility="+">
@@ -1160,24 +1171,13 @@
                                 <parameter type="org.mql.java.application.models.secondary.MethodModel"/>
                             </parameters>
                         </method>
-                        <method name="isClassImplements" returnType="boolean" visibility="+">
-                            <parameters>
-                                <parameter type="org.mql.java.application.models.primary.ClassModel"/>
-                                <parameter type="org.mql.java.application.models.primary.ClassModel"/>
-                            </parameters>
-                        </method>
                         <method name="isClassExtends" returnType="boolean" visibility="+">
                             <parameters>
                                 <parameter type="org.mql.java.application.models.primary.ClassModel"/>
                                 <parameter type="org.mql.java.application.models.primary.ClassModel"/>
                             </parameters>
                         </method>
-                        <method name="isIterable" returnType="boolean" visibility="+">
-                            <parameters>
-                                <parameter type="java.lang.Class&lt;?&gt;"/>
-                            </parameters>
-                        </method>
-                        <method name="isInnerClassOf" returnType="boolean" visibility="+">
+                        <method name="isClassImplements" returnType="boolean" visibility="+">
                             <parameters>
                                 <parameter type="org.mql.java.application.models.primary.ClassModel"/>
                                 <parameter type="org.mql.java.application.models.primary.ClassModel"/>
@@ -1233,13 +1233,13 @@
                     </fields>
                     <methods>
                         <method name="toString" returnType="java.lang.String" visibility="+"/>
-                        <method name="makeSound" returnType="void" visibility="+"/>
                         <method name="testDependency" returnType="void" visibility="~">
                             <parameters>
                                 <parameter type="org.mql.java.example.classes.Car"/>
                                 <parameter type="org.mql.java.example.classes.Driver"/>
                             </parameters>
                         </method>
+                        <method name="makeSound" returnType="void" visibility="+"/>
                         <method name="org.mql.java.example.classes.Bike" returnType="" visibility="+">
                             <parameters>
                                 <parameter type="org.mql.java.example.classes.Driver"/>
@@ -1256,13 +1256,13 @@
                     </fields>
                     <methods>
                         <method name="toString" returnType="java.lang.String" visibility="+"/>
+                        <method name="getWheels" returnType="java.util.List&lt;org.mql.java.example.classes.Wheel&gt;" visibility="+"/>
+                        <method name="makeSound" returnType="void" visibility="+"/>
                         <method name="inCaseOfAccidentDriveBike" returnType="void" visibility="+">
                             <parameters>
                                 <parameter type="org.mql.java.example.classes.Bike"/>
                             </parameters>
                         </method>
-                        <method name="getWheels" returnType="java.util.List&lt;org.mql.java.example.classes.Wheel&gt;" visibility="+"/>
-                        <method name="makeSound" returnType="void" visibility="+"/>
                         <method name="org.mql.java.example.classes.Car" returnType="" visibility="+">
                             <parameters>
                                 <parameter type="org.mql.java.example.classes.Driver"/>

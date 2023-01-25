@@ -24,9 +24,9 @@ public class JClass extends BoxPanel implements Draggable {
 
 	private ClassModel classModel;
 
-	private TitlePanel namePanel;
-	private SectionPanel fieldsPanel;
-	private SectionPanel methodsPanel;
+	private TitlePanel titlePanel;
+	private SectionPanel attributesPanel;
+	private SectionPanel operationsPanel;
 
 	private int eX, eY;
 
@@ -45,9 +45,9 @@ public class JClass extends BoxPanel implements Draggable {
 		if (classModel instanceof InterfaceModel) {
 			setBackground(new Color(251, 235, 255));
 		} else if (classModel instanceof EnumModel) {
-			setBackground(new Color(255, 255, 195));
+			setBackground(new Color(255, 255, 230));
 		} else {
-			setBackground(Color.white);
+			setBackground(new Color(245,245,250));
 		}
 
 		setSize(getPreferredSize());
@@ -102,39 +102,39 @@ public class JClass extends BoxPanel implements Draggable {
 	}
 
 	private void drawTitlePanel() {
-		namePanel = new TitlePanel();
-		add(namePanel);
+		titlePanel = new TitlePanel();
+		add(titlePanel);
 	}
 
 	private void drawAttributesPanel() {
-		fieldsPanel = new SectionPanel();
+		attributesPanel = new SectionPanel();
 
 		for (FieldModel umlMember : classModel.getFields()) {
 			if (!umlMember.getName().contains("$"))
-				fieldsPanel.add(new JField(umlMember));
+				attributesPanel.add(new JField(umlMember));
 		}
 
-		add(fieldsPanel);
+		add(attributesPanel);
 	}
 
 	private void drawOperationsPanel() {
-		methodsPanel = new SectionPanel();
+		operationsPanel = new SectionPanel();
 
 		for (MethodModel umlMember : classModel.getMethods()) {
-			methodsPanel.add(new JMethod(umlMember));
+			operationsPanel.add(new JMethod(umlMember));
 		}
 
-		add(methodsPanel);
+		add(operationsPanel);
 	}
 
 	private void drawConstantsPanel() {
-		fieldsPanel = new SectionPanel();
+		attributesPanel = new SectionPanel();
 
 		for (ConstantModel umlMember : ((EnumModel) classModel).getConstants()) {
-			fieldsPanel.add(new JConstant(umlMember));
+			attributesPanel.add(new JConstant(umlMember));
 		}
 
-		add(fieldsPanel);
+		add(attributesPanel);
 	}
 
 	private class TitlePanel extends BoxPanel {
@@ -145,14 +145,18 @@ public class JClass extends BoxPanel implements Draggable {
 
 			if (classModel instanceof InterfaceModel) {
 				add(new Label("<<interface>>"));
+				setBackground(new Color(251, 235, 255));
 			} else if (classModel instanceof EnumModel) {
 				Label titleLabel = new Label("<<enum>>");
+				setBackground(new Color(255, 255, 230));
 				add(titleLabel);
+			} else {
+				setBackground(new Color(245,245,250));
 			}
 
 			add(new Label(classModel.getName().replace("..", "::")));
 
-			setOpaque(false);
+			setOpaque(true);
 		}
 	}
 
@@ -166,7 +170,7 @@ public class JClass extends BoxPanel implements Draggable {
 		}
 	}
 
-	public ClassModel getClassModel() {
+	public ClassModel getClassifier() {
 		return classModel;
 	}
 

@@ -104,7 +104,6 @@ public class JPackage extends BoxPanel implements Draggable {
 
 		for (ClassModel classifier : packageModel.getClasses()) {
 			JClass jumlClassifier = new JClass(classifier);
-//			jumlClassifier.setLocation(10, 10);
 			classesPanel.add(jumlClassifier);
 
 			jClasses.add(jumlClassifier);
@@ -115,14 +114,14 @@ public class JPackage extends BoxPanel implements Draggable {
 
 	private void drawTitle(int padding) {
 		namePanel = new JPanel();
-		namePanel.setOpaque(false);
+		namePanel.setOpaque(true);
 		namePanel.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
 		Label titleLabel = new Label(StringUtils.toPackageName(packageModel.getName()));
 
 		JPanel p = new JPanel();
 		p.setLayout(new FlowLayout(FlowLayout.CENTER, getClassifiersPanel().getPreferredSize().width / 2, padding));
 		p.setBorder(BorderFactory.createMatteBorder(1, 1, 0, 1, Color.black));
-		p.setBackground(Color.white);
+		p.setBackground(new Color(255,245,230));
 		p.add(titleLabel);
 
 		namePanel.add(p);
